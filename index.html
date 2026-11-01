@@ -1,0 +1,413 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>WINSTEP UNIT10 データ分析 LAB</title>
+<style>
+:root{
+  --navy:#173a63;--blue:#2f80ed;--cyan:#34c5d8;--green:#2dbb7d;
+  --red:#e84f5f;--pink:#ef7c96;--yellow:#fff06a;--orange:#ff9f43;
+  --bg:#f4f8fc;--line:#dbe6f0;--ink:#213043;--muted:#687b90;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"Yu Gothic","Meiryo",sans-serif}
+main{max-width:1120px;margin:auto;padding:22px}
+button,input,textarea{font:inherit}
+button{border:0;border-radius:13px;padding:12px 16px;font-weight:900;cursor:pointer;background:var(--navy);color:#fff}
+button.alt{background:#fff;color:var(--navy);border:1px solid #cbd9e6}
+.hidden{display:none!important}
+.card,.mission{background:#fff;border:1px solid #e2eaf1;border-radius:24px;box-shadow:0 10px 30px #173a6318}
+.top{display:flex;justify-content:space-between;gap:12px;align-items:center;margin-bottom:14px}
+.progress{height:9px;background:#e4edf5;border-radius:99px;overflow:hidden;margin-bottom:18px}
+.progress>div{height:100%;background:linear-gradient(90deg,var(--cyan),var(--blue));transition:.25s}
+.tabs{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:16px}
+.tabs button{background:#fff;color:var(--navy);border:1px solid #cfdae5;text-align:left}
+.tabs button.locked{opacity:.4}
+.tabs small{color:#6f8093}
+.mission{padding:26px}
+.row{display:grid;grid-template-columns:1.03fr .97fr;gap:20px}
+.panel{border:1px solid var(--line);border-radius:18px;padding:18px;background:#fbfdff}
+.story{
+  border:2px solid #dce8f3;border-radius:17px;padding:17px;background:#fff;
+  line-height:1.9;font-size:1.02rem;margin-bottom:16px
+}
+.story-title{font-weight:900;color:var(--navy);margin-bottom:6px}
+.marker{background:linear-gradient(transparent 52%,#fff36a 52%);font-weight:900}
+.red{color:var(--red);font-weight:900}
+.blue{color:var(--blue);font-weight:900}
+.green{color:#16875b;font-weight:900}
+.question{
+  margin:14px 0;padding:14px 16px;border-left:7px solid var(--orange);
+  background:#fff9e8;border-radius:11px;font-weight:900;line-height:1.75
+}
+.choice{display:block;padding:11px 13px;margin:8px 0;border:1px solid #cdd9e5;border-radius:12px;background:#fff}
+.choice:has(input:checked){border-color:var(--blue);background:#edf6ff}
+textarea{width:100%;min-height:82px;border:1px solid #cbd9e6;border-radius:12px;padding:11px;resize:vertical}
+.actions{margin-top:12px}
+.result{
+  margin-top:17px;padding:18px;border-radius:18px;background:#f8fcff;
+  border:2px solid #bcdcf8;line-height:1.75
+}
+.result-head{
+  font-size:1.25rem;font-weight:900;color:var(--navy);margin-bottom:12px;
+  display:flex;align-items:center;gap:8px
+}
+.compare{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:12px 0}
+.compare-box{border:1px solid #dbe5ed;border-radius:13px;padding:12px;background:#fff}
+.compare-box b{display:block;color:var(--navy);margin-bottom:4px}
+.focus-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:12px}
+.focus-card{border-radius:14px;padding:13px;background:#fff;border:1px solid #dbe6ef}
+.focus-card .label{font-size:.83rem;font-weight:900;color:#fff;display:inline-block;border-radius:999px;padding:4px 9px;margin-bottom:8px}
+.focus-card:nth-child(1) .label{background:var(--red)}
+.focus-card:nth-child(2) .label{background:var(--blue)}
+.focus-card:nth-child(3) .label{background:var(--green)}
+.tip{
+  margin-top:13px;border:2px solid #ffd047;background:#fffce5;border-radius:14px;padding:13px 15px;
+  font-weight:900;font-size:1.05rem
+}
+.lock{margin-top:18px;padding:15px;border:2px dashed #c7d5e2;border-radius:16px;display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
+.code{width:80px;padding:9px;text-align:center;font-size:1.2rem;font-weight:900;border:2px solid #b9cad9;border-radius:10px}
+.err{color:var(--red);font-size:.9rem}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:7px;margin-top:10px}
+.stat{background:#fff;border:1px solid #dce6ef;border-radius:11px;padding:9px;text-align:center}
+.stat small{display:block;color:#748396}
+.data-caption{font-weight:900;color:var(--navy);margin-bottom:8px}
+svg{width:100%;height:auto;background:#fff;border:1px solid #e1e9f0;border-radius:13px}
+
+/* TOP */
+.home-wrap{display:flex;flex-direction:column;gap:20px}
+.hero-image-card{background:#fff;border:1px solid #e3ebf2;border-radius:26px;overflow:hidden;box-shadow:0 12px 34px rgba(23,58,99,.13)}
+.hero-image-card img{display:block;width:100%;height:auto}
+.top-intro{text-align:center;padding:4px 12px 0}
+.top-intro h1{margin:0;font-size:clamp(1.8rem,4.5vw,3.4rem);color:#142b47}
+.top-intro p{margin:10px auto 0;max-width:780px;color:#65768a;line-height:1.8;font-weight:700}
+.image-buttons{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.image-button{position:relative;padding:0;border:0;border-radius:22px;overflow:hidden;background:#fff;box-shadow:0 10px 28px rgba(23,58,99,.15);transition:.18s;cursor:pointer}
+.image-button:hover{transform:translateY(-4px) scale(1.01);box-shadow:0 16px 34px rgba(23,58,99,.20)}
+.image-button img{width:100%;height:auto;display:block}
+.image-button::after{content:"クリックしてスタート";position:absolute;right:14px;bottom:12px;background:rgba(15,37,63,.88);color:#fff;font-weight:900;font-size:.82rem;padding:7px 11px;border-radius:999px}
+.top-note{text-align:center;color:#75869a;font-size:.88rem}
+
+@media(max-width:780px){
+ .image-buttons,.row,.compare,.focus-grid{grid-template-columns:1fr}
+ .tabs{grid-template-columns:1fr 1fr}
+ .stats{grid-template-columns:1fr 1fr}
+ .hero-image-card,.image-button{border-radius:16px}
+}
+</style>
+</head>
+<body><main>
+
+<div id="home">
+  <div class="home-wrap">
+    <div class="hero-image-card"><img src="assets/hero.png" alt="WINSTEP UNIT10 データ分析"></div>
+    <div class="top-intro">
+      <h1>WINSTEP UNIT10　データ分析 LAB</h1>
+      <p>データ分析で大事なのは、まず「イメージ」すること。<br>予想して、動かして、確かめて、理由を考えよう！</p>
+    </div>
+    <div class="image-buttons">
+      <button class="image-button" onclick="openLesson(1)"><img src="assets/data1.png" alt="データ分析1"></button>
+      <button class="image-button" onclick="openLesson(2)"><img src="assets/data2.png" alt="データ分析2"></button>
+    </div>
+    <div class="top-note">※ 授業中は先生の指示に合わせて進めよう。各MISSIONの先は2桁コードで解放します。</div>
+  </div>
+</div>
+
+<div id="lesson1" class="hidden">
+  <div class="top"><button class="alt" onclick="home()">← TOP</button><b>データ分析①｜文章からグラフの変化をイメージしよう</b></div>
+  <div class="progress"><div id="prog" style="width:25%"></div></div>
+
+  <div class="tabs">
+    <button onclick="showM(1)">MISSION 1<br><small>小テストの訂正</small></button>
+    <button id="t2" class="locked" onclick="showM(2)">MISSION 2<br><small>AIドリルと得点</small></button>
+    <button id="t3" class="locked" onclick="showM(3)">CHALLENGE<br><small>外れ値を除く①</small></button>
+    <button id="t4" class="locked" onclick="showM(4)">FINAL<br><small>外れ値を除く②</small></button>
+  </div>
+
+  <section id="m1" class="mission">
+    <h2>MISSION 1｜情報Ⅰの小テスト、得点を訂正したら？</h2>
+    <div class="row">
+      <div class="panel">
+        <div class="story">
+          <div class="story-title">📘 状況</div>
+          10人の情報Ⅰの小テスト結果を集計しました。<br>
+          その後、<span class="marker"><span class="red">1人だけ</span>得点の入力ミス</span>が見つかり、
+          <span class="marker"><span class="red">74点 → 84点</span>に訂正</span>しました。<br>
+          <span class="marker">ほかの9人の得点は変わりません。</span>
+        </div>
+        <div class="question">この訂正によって、<span class="red">平均値</span>と<span class="blue">中央値</span>はどうなる？</div>
+        <label class="choice"><input type="radio" name="p1" value="both"> 平均値も中央値も上がる</label>
+        <label class="choice"><input type="radio" name="p1" value="mean"> 平均値だけ上がる</label>
+        <label class="choice"><input type="radio" name="p1" value="median"> 中央値だけ上がる</label>
+        <label class="choice"><input type="radio" name="p1" value="none"> どちらも変わらない</label>
+        <p><b>そう考えた理由を一言で</b></p>
+        <textarea id="r1" placeholder="どのデータが変わったかに注目して書こう"></textarea>
+        <div class="actions"><button onclick="run1()">予想して実行！</button></div>
+      </div>
+      <div class="panel">
+        <div class="data-caption">変更前の10人の点数</div>
+        <div id="scoreList"></div>
+        <div id="box"></div>
+        <div id="st" class="stats"></div>
+      </div>
+    </div>
+    <div id="res1" class="result hidden"></div>
+    <div id="lock1" class="lock hidden">
+      <div>🔒 次のMISSIONへ｜先生の2桁コード</div>
+      <div><input id="c1" class="code" maxlength="2" inputmode="numeric"><button onclick="unlock(1)">解除</button><div id="e1" class="err"></div></div>
+    </div>
+  </section>
+
+  <section id="m2" class="mission hidden">
+    <h2>MISSION 2｜AIドリルのデータを訂正したら？</h2>
+    <div class="row">
+      <div class="panel">
+        <div class="story">
+          <div class="story-title">💻 状況</div>
+          クラスで、<span class="marker">AIドリルで解いた問題数</span>と
+          <span class="marker">情報Ⅰの小テスト得点</span>の関係を調べました。<br>
+          ところが1人のデータに入力ミスがありました。正しくは、
+          <span class="marker"><span class="red">問題数も多く、得点も高い</span>生徒</span>でした。
+        </div>
+        <div class="question">この生徒の点を<span class="red">右上の正しい位置</span>へ直すと、正の相関はどうなる？</div>
+        <label class="choice"><input type="radio" name="p2" value="up"> 強くなる（rは1に近づく）</label>
+        <label class="choice"><input type="radio" name="p2" value="down"> 弱くなる（rは0に近づく）</label>
+        <label class="choice"><input type="radio" name="p2" value="same"> ほぼ変わらない</label>
+        <p><b>理由</b></p><textarea id="r2" placeholder="点の並び方がどう変わるかを書こう"></textarea>
+        <div class="actions"><button onclick="run2()">訂正して確かめる</button></div>
+      </div>
+      <div class="panel">
+        <div class="data-caption">横軸：AIドリルの問題数　／　縦軸：小テスト得点</div>
+        <div id="sc2"></div>
+        <div class="stats"><div class="stat"><small>相関係数 r</small><b id="rv2"></b></div></div>
+      </div>
+    </div>
+    <div id="res2" class="result hidden"></div>
+    <div id="lock2" class="lock hidden">
+      <div>🔒 CHALLENGEへ｜先生の2桁コード</div>
+      <div><input id="c2" class="code" maxlength="2" inputmode="numeric"><button onclick="unlock(2)">解除</button><div id="e2" class="err"></div></div>
+    </div>
+  </section>
+
+  <section id="m3" class="mission hidden">
+    <h2>CHALLENGE｜「外れ値を除く」と相関はどうなる？</h2>
+    <div class="row">
+      <div class="panel">
+        <div class="story">
+          <div class="story-title">🔥 状況</div>
+          AIドリルの問題数と小テスト得点には、全体として<span class="marker">正の相関</span>がありそうです。<br>
+          ただし、<span class="marker"><span class="red">1人だけ</span>問題数も得点も非常に高い</span>生徒がいました。<br>
+          この生徒を「他の生徒と離れすぎている」と考え、分析から除くことにしました。
+        </div>
+        <div class="question">この1点を除くと、相関係数はどうなる？</div>
+        <label class="choice"><input type="radio" name="p3" value="up"> 大きくなる</label>
+        <label class="choice"><input type="radio" name="p3" value="down"> 小さくなる</label>
+        <label class="choice"><input type="radio" name="p3" value="same"> ほぼ変わらない</label>
+        <p><b>理由</b></p><textarea id="r3" placeholder="赤い点が全体の右上がりをどうしている？"></textarea>
+        <div class="actions"><button onclick="run3()">除いて確かめる</button></div>
+      </div>
+      <div class="panel">
+        <div class="data-caption">赤い点を除く前</div>
+        <div id="sc3"></div>
+        <div class="stats"><div class="stat"><small>相関係数 r</small><b id="rv3"></b></div></div>
+      </div>
+    </div>
+    <div id="res3" class="result hidden"></div>
+    <div id="lock3" class="lock hidden">
+      <div>🔒 FINALへ｜先生の2桁コード</div>
+      <div><input id="c3" class="code" maxlength="2" inputmode="numeric"><button onclick="unlock(3)">解除</button><div id="e3" class="err"></div></div>
+    </div>
+  </section>
+
+  <section id="m4" class="mission hidden">
+    <h2>FINAL CHALLENGE｜今度の外れ値はどうだ？</h2>
+    <div class="row">
+      <div class="panel">
+        <div class="story">
+          <div class="story-title">🏁 状況</div>
+          別のクラスでも、AIドリルの問題数と小テスト得点を調べました。<br>
+          1人だけ、<span class="marker"><span class="red">問題数は非常に多いのに、得点は低い</span></span>生徒がいました。<br>
+          先生はこのデータを除いて、もう一度相関を調べようとしています。
+        </div>
+        <div class="question">赤い1点を除くと、正の相関はどうなる？</div>
+        <label class="choice"><input type="radio" name="p4" value="up"> 強くなる</label>
+        <label class="choice"><input type="radio" name="p4" value="down"> 弱くなる</label>
+        <label class="choice"><input type="radio" name="p4" value="same"> ほぼ変わらない</label>
+        <p><b>理由を具体的に</b></p><textarea id="r4" placeholder="CHALLENGEと同じ答えになるとは限らない！"></textarea>
+        <div class="actions"><button onclick="run4()">除いて結果を見る</button></div>
+      </div>
+      <div class="panel">
+        <div class="data-caption">赤い点が全体の並びをどう変えている？</div>
+        <div id="sc4"></div>
+        <div class="stats"><div class="stat"><small>相関係数 r</small><b id="rv4"></b></div></div>
+      </div>
+    </div>
+    <div id="res4" class="result hidden"></div>
+  </section>
+</div>
+
+<div id="lesson2" class="hidden">
+  <div class="top"><button class="alt" onclick="home()">← TOP</button><b>データ分析②｜外れ値・回帰直線・残差</b></div>
+  <section class="card" style="padding:34px;text-align:center">
+    <h2>データ分析②は次に作成！</h2>
+    <p style="color:#687b90;line-height:1.8">回帰直線・予測値・残差を、同じ「文章 → 予想 → 実行 → 要点確認」で作ります。</p>
+  </section>
+</div>
+
+</main>
+<script>
+const codes={1:"27",2:"48",3:"73"};
+const unlocked={1:true,2:false,3:false,4:false};
+
+const A=[41,48,52,56,63,65,67,70,72,74];
+const B=[41,48,52,56,63,65,67,70,72,84];
+
+const S2a=[[1,2],[2,2.8],[3,3.2],[4,4.5],[5,4.2],[6,5.4],[7,5.7],[8,6.4],[5.7,3.4]];
+const S2b=[[1,2],[2,2.8],[3,3.2],[4,4.5],[5,4.2],[6,5.4],[7,5.7],[8,6.4],[8.4,7.5]];
+
+const S3a=[[1,2.4],[2,5.1],[3,2.9],[4,5.2],[5,4.1],[6,6.2],[7,4.8],[8,6.4],[10,10.2]];
+const S3b=S3a.slice(0,-1);
+
+const S4a=[[1,2.1],[2,2.8],[3,2.7],[4,4.6],[5,4.3],[6,5.9],[7,5.5],[8,7.1],[9,3.0]];
+const S4b=S4a.slice(0,-1);
+
+function hideAll(){["home","lesson1","lesson2"].forEach(id=>document.getElementById(id).classList.add("hidden"))}
+function home(){hideAll();document.getElementById("home").classList.remove("hidden")}
+function openLesson(n){
+  hideAll();document.getElementById("lesson"+n).classList.remove("hidden");
+  if(n===1){
+    render1(A,false);
+    renderSc("sc2",S2a,S2a.length-1);document.getElementById("rv2").textContent=corr(S2a).toFixed(2);
+    renderSc("sc3",S3a,S3a.length-1);document.getElementById("rv3").textContent=corr(S3a).toFixed(2);
+    renderSc("sc4",S4a,S4a.length-1);document.getElementById("rv4").textContent=corr(S4a).toFixed(2);
+  }
+}
+function showM(n){
+  if(!unlocked[n])return;
+  [1,2,3,4].forEach(i=>document.getElementById("m"+i).classList.add("hidden"));
+  document.getElementById("m"+n).classList.remove("hidden");
+  window.scrollTo({top:0,behavior:"smooth"});
+}
+function unlock(n){
+  const val=document.getElementById("c"+n).value.trim(),e=document.getElementById("e"+n);
+  if(val===codes[n]){
+    unlocked[n+1]=true;
+    document.getElementById("t"+(n+1)).classList.remove("locked");
+    document.getElementById("prog").style.width=((n+1)*25)+"%";
+    showM(n+1);
+  }else e.textContent="コードが違います。先生の説明を聞こう！";
+}
+function pick(n){const x=document.querySelector('input[name="p'+n+'"]:checked');return x?x.value:null}
+function need(n){
+  const p=pick(n),r=document.getElementById("r"+n).value.trim();
+  if(!p||!r){alert("予想と理由を入力してから実行しよう！");return null}
+  return[p,r]
+}
+function esc(s){return s.replace(/[&<>"']/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"}[m]))}
+
+function med(a){const b=[...a].sort((x,y)=>x-y),n=b.length,m=Math.floor(n/2);return n%2?b[m]:(b[m-1]+b[m])/2}
+function q(a){
+  const b=[...a].sort((x,y)=>x-y),m=b.length/2;
+  return{min:b[0],q1:med(b.slice(0,m)),med:med(b),q3:med(b.slice(m)),max:b.at(-1),mean:b.reduce((s,v)=>s+v,0)/b.length}
+}
+function render1(a,after){
+  const list=a.map((v,i)=>{
+    const changed=i===a.length-1;
+    return `<span style="display:inline-block;margin:4px;padding:6px 9px;border-radius:9px;background:${changed?'#fff1f2':'#eef5fb'};border:${changed?'2px solid #e84f5f':'1px solid #dbe6ef'};font-weight:900">${v}</span>`
+  }).join("");
+  document.getElementById("scoreList").innerHTML=list;
+  document.getElementById("box").innerHTML=boxSVG(a);
+  const s=q(a);
+  document.getElementById("st").innerHTML=[["平均",s.mean.toFixed(1)],["中央値",s.med],["第1四分位",s.q1],["第3四分位",s.q3]]
+    .map(v=>`<div class="stat"><small>${v[0]}</small><b>${v[1]}</b></div>`).join("");
+}
+function boxSVG(a){
+  const s=q(a),W=600,H=210,p=35,X=v=>p+v/100*(W-2*p),y=100;
+  let ticks="";for(let t=0;t<=100;t+=20)ticks+=`<text x="${X(t)}" y="190" text-anchor="middle" fill="#748396">${t}</text>`;
+  return `<svg viewBox="0 0 ${W} ${H}">
+    <line x1="${X(s.min)}" y1="${y}" x2="${X(s.max)}" y2="${y}" stroke="#173a63" stroke-width="4"/>
+    <line x1="${X(s.min)}" y1="82" x2="${X(s.min)}" y2="118" stroke="#173a63" stroke-width="4"/>
+    <line x1="${X(s.max)}" y1="82" x2="${X(s.max)}" y2="118" stroke="#173a63" stroke-width="4"/>
+    <rect x="${X(s.q1)}" y="62" width="${X(s.q3)-X(s.q1)}" height="76" fill="#dff1ff" stroke="#2f80ed" stroke-width="4"/>
+    <line x1="${X(s.med)}" y1="62" x2="${X(s.med)}" y2="138" stroke="#e84f5f" stroke-width="5"/>
+    <text x="${X(s.mean)}" y="48" text-anchor="middle" fill="#2dbb7d" font-size="26" font-weight="900">×</text>${ticks}
+  </svg>`;
+}
+function corr(P){
+  const n=P.length,mx=P.reduce((s,p)=>s+p[0],0)/n,my=P.reduce((s,p)=>s+p[1],0)/n;
+  let num=0,dx=0,dy=0;
+  P.forEach(([x,y])=>{const a=x-mx,b=y-my;num+=a*b;dx+=a*a;dy+=b*b});
+  return num/Math.sqrt(dx*dy)
+}
+function scSVG(P,h=-1){
+  const W=600,H=350,p=45,X=x=>p+x/11*(W-2*p),Y=y=>H-p-y/11*(H-2*p);
+  let grid="";
+  for(let t=0;t<=10;t+=2){
+    grid+=`<line x1="${X(t)}" y1="${p}" x2="${X(t)}" y2="${H-p}" stroke="#edf2f6"/>
+    <line x1="${p}" y1="${Y(t)}" x2="${W-p}" y2="${Y(t)}" stroke="#edf2f6"/>
+    <text x="${X(t)}" y="${H-18}" text-anchor="middle" fill="#748396" font-size="12">${t}</text>`;
+  }
+  const dots=P.map((v,i)=>`<circle cx="${X(v[0])}" cy="${Y(v[1])}" r="${i===h?10:7}" fill="${i===h?'#e84f5f':'#2f80ed'}" stroke="white" stroke-width="2"/>`).join("");
+  return `<svg viewBox="0 0 ${W} ${H}">${grid}<line x1="${p}" y1="${H-p}" x2="${W-p}" y2="${H-p}" stroke="#748396"/><line x1="${p}" y1="${p}" x2="${p}" y2="${H-p}" stroke="#748396"/>${dots}</svg>`;
+}
+function renderSc(id,P,h=-1){document.getElementById(id).innerHTML=scSVG(P,h)}
+
+function resultHTML(userPred,userReason,actual,point1,point2,tip){
+  return `<div class="result-head">🔎 実行後に、どこを見るべきだったか確認！</div>
+  <div class="compare">
+    <div class="compare-box"><b>あなたの予想</b>${userPred}<br><span style="color:#687b90">${esc(userReason)}</span></div>
+    <div class="compare-box"><b>実際の結果</b>${actual}</div>
+  </div>
+  <div class="focus-grid">
+    <div class="focus-card"><span class="label">① 問題文の要点</span>${point1}</div>
+    <div class="focus-card"><span class="label">② データのどこを見る？</span>${point2}</div>
+    <div class="focus-card"><span class="label">③ 考え方と結論</span>${tip}</div>
+  </div>
+  <div class="tip">🎯 攻略ポイント：${tip}</div>`;
+}
+
+function run1(){
+  const z=need(1);if(!z)return;
+  const before=q(A),after=q(B);render1(B,true);
+  const map={both:"平均値も中央値も上がる",mean:"平均値だけ上がる",median:"中央値だけ上がる",none:"どちらも変わらない"};
+  const actual=`平均値 <span class="red">${before.mean.toFixed(1)} → ${after.mean.toFixed(1)}</span><br>中央値 <span class="blue">${before.med} → ${after.med}</span>`;
+  const p1=`<span class="marker"><span class="red">1人だけ</span> 74→84</span><br>＋ ほかの9人は変化なし`;
+  const p2=`変わったのは<span class="red">最高点の1か所</span>。<br><span class="marker">真ん中の2つ（63・65）は変わっていない</span>。`;
+  const p3=`合計点は10点増える → <span class="red">平均値は上がる</span>。<br>真ん中は同じ → <span class="blue">中央値は変わらない</span>。`;
+  res1.innerHTML=resultHTML(map[z[0]],z[1],actual,p1,p2,p3);res1.classList.remove("hidden");lock1.classList.remove("hidden");
+}
+function run2(){
+  const z=need(2);if(!z)return;
+  const a=corr(S2a),b=corr(S2b);renderSc("sc2",S2b,S2b.length-1);rv2.textContent=b.toFixed(2);
+  const map={up:"強くなる",down:"弱くなる",same:"ほぼ変わらない"};
+  const actual=`相関係数 r：<span class="red">${a.toFixed(2)} → ${b.toFixed(2)}</span>`;
+  const p1=`正しくは<span class="marker"><span class="red">問題数も多く、得点も高い</span></span>。`;
+  const p2=`訂正後の赤い点は<span class="red">右上</span>へ移動。<br>点全体が<span class="marker">右上がりの直線に近づく</span>。`;
+  const p3=`正の相関が<span class="green">強くなる</span>。相関係数は<span class="green">1に近づく</span>。`;
+  res2.innerHTML=resultHTML(map[z[0]],z[1],actual,p1,p2,p3);res2.classList.remove("hidden");lock2.classList.remove("hidden");
+}
+function run3(){
+  const z=need(3);if(!z)return;
+  const a=corr(S3a),b=corr(S3b);renderSc("sc3",S3b);rv3.textContent=b.toFixed(2);
+  const map={up:"大きくなる",down:"小さくなる",same:"ほぼ変わらない"};
+  const actual=`相関係数 r：<span class="red">${a.toFixed(2)} → ${b.toFixed(2)}</span>`;
+  const p1=`<span class="marker"><span class="red">問題数も得点も非常に高い</span>1点</span>を除く。`;
+  const p2=`赤い点は<span class="red">右上</span>にあり、実は全体の<span class="marker">右上がりを強めていた</span>。`;
+  const p3=`その点を除くと直線的な並びが弱まり、相関係数は<span class="red">小さくなる</span>。`;
+  res3.innerHTML=resultHTML(map[z[0]],z[1],actual,p1,p2,p3);res3.classList.remove("hidden");lock3.classList.remove("hidden");
+}
+function run4(){
+  const z=need(4);if(!z)return;
+  const a=corr(S4a),b=corr(S4b);renderSc("sc4",S4b);rv4.textContent=b.toFixed(2);
+  const map={up:"強くなる",down:"弱くなる",same:"ほぼ変わらない"};
+  const actual=`相関係数 r：<span class="red">${a.toFixed(2)} → ${b.toFixed(2)}</span>`;
+  const p1=`<span class="marker"><span class="red">問題数は非常に多いのに、得点は低い</span></span>1点を除く。`;
+  const p2=`赤い点は<span class="red">右下</span>にあり、全体の<span class="marker">右上がりの並びを崩している</span>。`;
+  const p3=`この場合は赤い点を除くと点が直線に近づき、正の相関は<span class="green">強くなる</span>。`;
+  res4.innerHTML=resultHTML(map[z[0]],z[1],actual,p1,p2,p3);res4.classList.remove("hidden");
+}
+home();
+</script>
+</body>
+</html>
