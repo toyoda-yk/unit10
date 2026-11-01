@@ -21,7 +21,7 @@ button.alt{background:#fff;color:var(--navy);border:1px solid #cbd9e6}
 .top{display:flex;justify-content:space-between;gap:12px;align-items:center;margin-bottom:14px}
 .progress{height:9px;background:#e4edf5;border-radius:99px;overflow:hidden;margin-bottom:18px}
 .progress>div{height:100%;background:linear-gradient(90deg,var(--cyan),var(--blue));transition:.25s}
-.tabs{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:16px}
+.tabs{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin-bottom:16px}
 .tabs button{background:#fff;color:var(--navy);border:1px solid #cfdae5;text-align:left}
 .tabs button.locked{opacity:.4}
 .tabs small{color:#6f8093}
@@ -69,7 +69,7 @@ textarea{width:100%;min-height:82px;border:1px solid #cbd9e6;border-radius:12px;
 .lock{margin-top:18px;padding:15px;border:2px dashed #c7d5e2;border-radius:16px;display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
 .code{width:80px;padding:9px;text-align:center;font-size:1.2rem;font-weight:900;border:2px solid #b9cad9;border-radius:10px}
 .err{color:var(--red);font-size:.9rem}
-.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:7px;margin-top:10px}
+.stats{display:grid;grid-template-columns:repeat(5,1fr);gap:7px;margin-top:10px}
 .stat{background:#fff;border:1px solid #dce6ef;border-radius:11px;padding:9px;text-align:center}
 .stat small{display:block;color:#748396}
 .data-caption{font-weight:900;color:var(--navy);margin-bottom:8px}
@@ -89,12 +89,137 @@ svg{width:100%;height:auto;background:#fff;border:1px solid #e1e9f0;border-radiu
 .image-button::after{content:"クリックしてスタート";position:absolute;right:14px;bottom:12px;background:rgba(15,37,63,.88);color:#fff;font-weight:900;font-size:.82rem;padding:7px 11px;border-radius:999px}
 .top-note{text-align:center;color:#75869a;font-size:.88rem}
 
+
+.play-hero{
+  padding:20px;border-radius:20px;
+  background:linear-gradient(135deg,#152f52,#214f7f);
+  color:#fff;margin-bottom:18px
+}
+.play-hero h2{margin:0 0 8px;font-size:1.7rem}
+.play-hero p{margin:0;line-height:1.8}
+.lab-switch{display:flex;gap:10px;flex-wrap:wrap;margin:14px 0}
+.lab-switch button.active{background:var(--orange);color:#17283c}
+.lab-title{display:flex;justify-content:space-between;gap:12px;align-items:center;flex-wrap:wrap}
+.lab-title h3{margin:0;color:var(--navy)}
+.challenge-box{
+  background:#fff8d9;border:2px solid #ffd24c;border-radius:17px;padding:15px;
+  line-height:1.75;margin:14px 0
+}
+.number-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;margin:12px 0}
+.number-grid input{
+  width:100%;padding:11px 6px;text-align:center;border:2px solid #cad8e5;
+  border-radius:11px;font-weight:900;font-size:1.05rem
+}
+.number-grid input:focus{outline:none;border-color:var(--blue);background:#f1f8ff}
+.dual-chart{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.mini-label{font-size:.86rem;font-weight:900;color:#6d7c8c;margin-bottom:5px}
+.condition-list{display:grid;grid-template-columns:repeat(2,1fr);gap:8px;margin:12px 0}
+.condition{
+  border:1px solid #d8e3ec;border-radius:12px;padding:10px;background:#fff;font-weight:800
+}
+.condition.ok{background:#eafaf2;border-color:#87d7b0;color:#14734e}
+.condition.ng{background:#fff5f4;border-color:#f1b9b4;color:#a83d38}
+.success{
+  margin-top:12px;padding:15px;border-radius:15px;background:#eafaf2;border:2px solid #71cf9f;
+  font-weight:900;color:#126d49
+}
+.sorted-data{line-height:2}
+.sorted-data span{
+  display:inline-block;margin:3px;padding:4px 7px;border-radius:8px;background:#eef5fb;font-weight:800
+}
+.scatter-tools{display:flex;gap:8px;flex-wrap:wrap;margin:10px 0}
+.scatter-tools button{padding:9px 12px}
+.scatter-note{font-size:.9rem;color:#65778b;line-height:1.65}
+#playScatter svg{touch-action:none;cursor:crosshair}
+.point-pill{
+  display:inline-block;padding:5px 8px;border-radius:999px;background:#eef5fb;
+  margin:3px;font-size:.88rem;font-weight:800
+}
+.free-note{background:#edf7ff;border:1px solid #b9dcf7;border-radius:12px;padding:11px;line-height:1.7}
+@media(max-width:780px){
+  .dual-chart,.condition-list{grid-template-columns:1fr}
+  .number-grid{grid-template-columns:repeat(2,1fr)}
+}
+
 @media(max-width:780px){
  .image-buttons,.row,.compare,.focus-grid{grid-template-columns:1fr}
  .tabs{grid-template-columns:1fr 1fr}
  .stats{grid-template-columns:1fr 1fr}
  .hero-image-card,.image-button{border-radius:16px}
 }
+
+/* ===== データ分析② ===== */
+.lesson2-tabs{
+  display:grid;
+  grid-template-columns:repeat(5,1fr);
+  gap:10px;
+  margin-bottom:16px
+}
+.lesson2-tabs button{
+  background:#fff;color:var(--navy);
+  border:1px solid #cfdae5;text-align:left
+}
+.lesson2-tabs button.locked{opacity:.4}
+.lesson2-tabs small{color:#6f8093}
+.sd-bars{
+  display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:12px
+}
+.sd-class{
+  border:1px solid #dbe6ef;border-radius:15px;padding:13px;background:#fff
+}
+.sd-numberline{
+  position:relative;height:92px;border-bottom:2px solid #a9bac9;margin-top:10px
+}
+.sd-dot{
+  position:absolute;bottom:8px;width:12px;height:12px;border-radius:50%;
+  background:#2f80ed;transform:translateX(-50%)
+}
+.sd-mean{
+  position:absolute;top:3px;bottom:0;width:3px;background:#e84f5f;transform:translateX(-50%)
+}
+.sd-lab-grid{
+  display:grid;grid-template-columns:1fr 1fr;gap:18px
+}
+.score-lab-inputs{
+  display:grid;grid-template-columns:repeat(5,1fr);gap:8px;margin:12px 0
+}
+.score-lab-inputs input{
+  width:100%;padding:10px 6px;text-align:center;border:2px solid #cad8e5;
+  border-radius:10px;font-weight:900
+}
+.score-strip{
+  position:relative;height:120px;border-bottom:2px solid #93a7b9;margin-top:8px
+}
+.score-strip .dot{
+  position:absolute;width:13px;height:13px;border-radius:50%;
+  background:#2f80ed;transform:translate(-50%,-50%)
+}
+.score-strip .meanline{
+  position:absolute;top:5px;bottom:0;width:3px;background:#e84f5f;transform:translateX(-50%)
+}
+.metric-grid{
+  display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:10px
+}
+.metric{
+  background:#fff;border:1px solid #dce6ef;border-radius:12px;padding:10px;text-align:center
+}
+.metric small{display:block;color:#748396}
+.regression-legend{
+  display:flex;gap:14px;flex-wrap:wrap;font-size:.9rem;color:#5d6f82;margin:8px 0
+}
+.legend-line{display:inline-flex;align-items:center;gap:6px}
+.legend-line i{display:inline-block;width:22px;height:4px;border-radius:99px;background:#173a63}
+.legend-line i.red{background:#e84f5f}
+.reg-lab-note{
+  padding:12px 14px;border:1px solid #bcdcf8;background:#f4faff;
+  border-radius:13px;line-height:1.7
+}
+@media(max-width:780px){
+  .lesson2-tabs{grid-template-columns:1fr 1fr}
+  .sd-bars,.sd-lab-grid{grid-template-columns:1fr}
+  .metric-grid{grid-template-columns:1fr 1fr}
+}
+
 </style>
 </head>
 <body><main>
@@ -116,13 +241,14 @@ svg{width:100%;height:auto;background:#fff;border:1px solid #e1e9f0;border-radiu
 
 <div id="lesson1" class="hidden">
   <div class="top"><button class="alt" onclick="home()">← TOP</button><b>データ分析①｜文章からグラフの変化をイメージしよう</b></div>
-  <div class="progress"><div id="prog" style="width:25%"></div></div>
+  <div class="progress"><div id="prog" style="width:20%"></div></div>
 
   <div class="tabs">
     <button onclick="showM(1)">MISSION 1<br><small>小テストの訂正</small></button>
     <button id="t2" class="locked" onclick="showM(2)">MISSION 2<br><small>AIドリルと得点</small></button>
     <button id="t3" class="locked" onclick="showM(3)">CHALLENGE<br><small>外れ値を除く①</small></button>
     <button id="t4" class="locked" onclick="showM(4)">FINAL<br><small>外れ値を除く②</small></button>
+    <button id="t5" class="locked" onclick="showM(5)">FINAL STAGE<br><small>DATA PLAYGROUND</small></button>
   </div>
 
   <section id="m1" class="mission">
@@ -245,20 +371,378 @@ svg{width:100%;height:auto;background:#fff;border:1px solid #e1e9f0;border-radiu
     </div>
     <div id="res4" class="result hidden"></div>
   </section>
+
+  <section id="m5" class="mission hidden">
+    <div class="play-hero">
+      <h2>🏆 FINAL STAGE｜DATA PLAYGROUND</h2>
+      <p><b>条件を保ったまま、グラフを変えろ！</b><br>
+      ここからは「答えを選ぶ」のではなく、自分でデータを動かしてグラフの変化をつくります。</p>
+    </div>
+
+    <div class="lab-switch">
+      <button id="boxLabBtn" class="active" onclick="showLab('box')">📦 箱ひげ図 LAB</button>
+      <button id="scatterLabBtn" onclick="showLab('scatter')">📈 散布図 LAB</button>
+    </div>
+
+    <div id="boxLab" class="panel">
+      <div class="lab-title">
+        <h3>箱ひげ図 LAB｜同じ条件なのに、形を変えられる？</h3>
+        <button class="alt" onclick="resetBoxChallenge()">↻ リセット</button>
+      </div>
+
+      <div class="lab-switch">
+        <button id="boxModeShort" class="active" onclick="setBoxMode('short')">MISSION A｜箱を短く</button>
+        <button id="boxModeLong" onclick="setBoxMode('long')">MISSION B｜箱を長く</button>
+      </div>
+
+      <div id="boxChallengeText" class="challenge-box"></div>
+
+      <div class="row">
+        <div>
+          <div class="mini-label">10個のデータを自由に変更</div>
+          <div id="boxInputs" class="number-grid"></div>
+          <div class="mini-label">小さい順に並べると</div>
+          <div id="sortedBoxData" class="sorted-data"></div>
+          <div id="boxConditions" class="condition-list"></div>
+          <div id="boxSuccess" class="success hidden"></div>
+        </div>
+
+        <div>
+          <div class="dual-chart">
+            <div>
+              <div class="mini-label">START</div>
+              <div id="boxStartChart"></div>
+            </div>
+            <div>
+              <div class="mini-label">NOW</div>
+              <div id="boxNowChart"></div>
+            </div>
+          </div>
+          <div class="free-note" style="margin-top:10px">
+            <b>👀 見るのは「数値」だけじゃない。</b><br>
+            赤い線と赤い×の位置、箱の長さ、ひげの長さがどう変わったかも比べよう。
+            <b>赤い線と×が何を示すかは、自分で思い出そう。</b>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="scatterLab" class="panel hidden">
+      <div class="lab-title">
+        <h3>散布図 LAB｜点を動かして、相関をつくれ！</h3>
+        <button class="alt" onclick="resetScatterChallenge()">↻ リセット</button>
+      </div>
+
+      <div class="lab-switch">
+        <button id="scatterModeStrong" class="active" onclick="setScatterMode('strong')">MISSION A｜rを0.85以上に</button>
+        <button id="scatterModeOne" onclick="setScatterMode('one')">MISSION B｜1点だけで崩す</button>
+        <button id="scatterModeFree" onclick="setScatterMode('free')">FREE｜自由実験</button>
+      </div>
+
+      <div id="scatterChallengeText" class="challenge-box"></div>
+
+      <div class="row">
+        <div>
+          <div id="playScatter"></div>
+          <div class="scatter-note">
+            ● 点をドラッグして移動できます。点をクリックすると選択状態になります。<br>
+            FREEでは点の追加・削除も試してOK。
+          </div>
+          <div class="scatter-tools">
+            <button onclick="addPlayPoint()">＋ 点を追加</button>
+            <button class="alt" onclick="deleteSelectedPoint()">選択した点を削除</button>
+          </div>
+        </div>
+
+        <div>
+          <div class="stats">
+            <div class="stat"><small>点の数</small><b id="playPointCount">10</b></div>
+            <div class="stat"><small>相関係数 r</small><b id="playR">0.00</b></div>
+            <div class="stat"><small>動かした点</small><b id="movedCount">0</b></div>
+            <div class="stat"><small>|r|</small><b id="absR">0.00</b></div>
+          </div>
+          <div id="scatterConditions" class="condition-list"></div>
+          <div id="scatterSuccess" class="success hidden"></div>
+          <div class="free-note" style="margin-top:12px">
+            <b>🎯 観察ポイント</b><br>
+            同じ10個の点でも、<span class="red">並び方</span>が変われば相関係数は大きく変化する。
+            「右上がりっぽい」「直線に近い」「1点だけ離れている」を意識して動かそう。
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 </div>
 
+
 <div id="lesson2" class="hidden">
-  <div class="top"><button class="alt" onclick="home()">← TOP</button><b>データ分析②｜外れ値・回帰直線・残差</b></div>
-  <section class="card" style="padding:34px;text-align:center">
-    <h2>データ分析②は次に作成！</h2>
-    <p style="color:#687b90;line-height:1.8">回帰直線・予測値・残差を、同じ「文章 → 予想 → 実行 → 要点確認」で作ります。</p>
+  <div class="top">
+    <button class="alt" onclick="home()">← TOP</button>
+    <b>データ分析②｜ばらつき・予測・ズレをイメージしよう</b>
+  </div>
+
+  <div class="progress"><div id="prog2" style="width:20%"></div></div>
+
+  <div class="lesson2-tabs">
+    <button onclick="showM2(1)">MISSION 1<br><small>標準偏差</small></button>
+    <button id="u2t2" class="locked" onclick="showM2(2)">MISSION 2<br><small>同じ得点の意味</small></button>
+    <button id="u2t3" class="locked" onclick="showM2(3)">MISSION 3<br><small>残差を読む</small></button>
+    <button id="u2t4" class="locked" onclick="showM2(4)">FINAL<br><small>線も動く</small></button>
+    <button id="u2t5" class="locked" onclick="showM2(5)">FINAL STAGE<br><small>PREDICTION LAB</small></button>
+  </div>
+
+
+  <section id="u2m1" class="mission">
+    <h2>MISSION 1｜条件は同じ。でも「ばらつき」も同じ？</h2>
+    <div class="row">
+      <div class="panel">
+        <div class="story">
+          <div class="story-title">📘 状況</div>
+          A組とB組で10人ずつ小テストを受けました。<br>
+          どちらのクラスも、
+          <span class="marker"><span class="red">平均60点・最低30点・最高90点</span></span>です。<br>
+          右の図は、10人の得点がどこに分布しているかを表しています。
+        </div>
+
+        <div class="question">
+          標準偏差が<span class="red">小さい</span>のはどちらだと考える？
+        </div>
+        <label class="choice"><input type="radio" name="u2p1" value="A"> A組</label>
+        <label class="choice"><input type="radio" name="u2p1" value="B"> B組</label>
+        <label class="choice"><input type="radio" name="u2p1" value="same"> 同じ</label>
+
+        <p><b>そう考えた理由</b></p>
+        <textarea id="u2r1" placeholder="平均・最低・最高は同じ。それでも違いがあるとしたら、図のどこ？"></textarea>
+        <div class="actions"><button onclick="u2run1()">実行して標準偏差を確認</button></div>
+      </div>
+
+      <div class="panel">
+        <div id="sdCompare"></div>
+      </div>
+    </div>
+
+    <div id="u2res1" class="result hidden"></div>
+    <div id="u2lock1" class="lock hidden">
+      <div>🔒 MISSION 2へ｜先生の2桁コード</div>
+      <div><input id="u2c1" class="code" maxlength="2" inputmode="numeric"><button onclick="u2unlock(1)">解除</button><div id="u2e1" class="err"></div></div>
+    </div>
+  </section>
+
+
+
+  <section id="u2m2" class="mission hidden">
+    <h2>MISSION 2｜同じ82点。でも「予想以上」なのは？</h2>
+    <div class="row">
+      <div class="panel">
+        <div class="story">
+          <div class="story-title">📈 状況</div>
+          「AIドリルに取り組んだ時間」と「小テスト得点」の関係を調べ、
+          散布図に<span class="marker"><span class="red">回帰直線</span></span>を引きました。<br>
+          AさんとBさんは、どちらも<span class="marker">実際の得点は82点</span>でした。
+        </div>
+
+        <div class="question">
+          全体の傾向から見て、<span class="red">「予想以上の得点だった」</span>といえるのは誰？
+        </div>
+        <label class="choice"><input type="radio" name="u2p2" value="A"> Aさん</label>
+        <label class="choice"><input type="radio" name="u2p2" value="B"> Bさん</label>
+        <label class="choice"><input type="radio" name="u2p2" value="both"> 2人とも</label>
+        <label class="choice"><input type="radio" name="u2p2" value="none"> どちらともいえない</label>
+
+        <p><b>そう考えた理由</b></p>
+        <textarea id="u2r2" placeholder="同じ82点でも、回帰直線との位置関係は同じ？"></textarea>
+        <div class="actions"><button onclick="u2run2()">実行して予測値を確認</button></div>
+      </div>
+
+      <div class="panel">
+        <div id="regMission2"></div>
+        <div id="regMission2Stats" class="stats hidden"></div>
+      </div>
+    </div>
+
+    <div id="u2res2" class="result hidden"></div>
+    <div id="u2lock2" class="lock hidden">
+      <div>🔒 MISSION 3へ｜先生の2桁コード</div>
+      <div><input id="u2c2" class="code" maxlength="2" inputmode="numeric"><button onclick="u2unlock(2)">解除</button><div id="u2e2" class="err"></div></div>
+    </div>
+  </section>
+
+
+
+  <section id="u2m3" class="mission hidden">
+    <h2>MISSION 3｜残差が一番大きい点はどれ？</h2>
+    <div class="row">
+      <div class="panel">
+        <div class="story">
+          <div class="story-title">🎯 状況</div>
+          散布図にはA・B・Cの3人が示されています。<br>
+          3人とも回帰直線から少し外れていますが、
+          <span class="marker">残差は「同じxの位置での、実際の値と予測値との差」</span>です。
+        </div>
+
+        <div class="question">
+          <span class="red">残差の絶対値</span>が最も大きいのはどの点？
+        </div>
+        <label class="choice"><input type="radio" name="u2p3" value="A"> A</label>
+        <label class="choice"><input type="radio" name="u2p3" value="B"> B</label>
+        <label class="choice"><input type="radio" name="u2p3" value="C"> C</label>
+
+        <p><b>そう考えた理由</b></p>
+        <textarea id="u2r3" placeholder="点と直線の『どの方向の差』を見ればいい？"></textarea>
+        <div class="actions"><button onclick="u2run3()">実行して残差を表示</button></div>
+      </div>
+
+      <div class="panel">
+        <div id="residualCompareGraphic"></div>
+      </div>
+    </div>
+
+    <div id="u2res3" class="result hidden"></div>
+    <div id="u2lock3" class="lock hidden">
+      <div>🔒 FINALへ｜先生の2桁コード</div>
+      <div><input id="u2c3" class="code" maxlength="2" inputmode="numeric"><button onclick="u2unlock(3)">解除</button><div id="u2e3" class="err"></div></div>
+    </div>
+  </section>
+
+
+
+  <section id="u2m4" class="mission hidden">
+    <h2>FINAL｜点を10点上げたら、残差も10増える？</h2>
+    <div class="row">
+      <div class="panel">
+        <div class="story">
+          <div class="story-title">🔥 状況</div>
+          散布図の<span class="marker"><span class="red">赤い点だけ</span></span>を、
+          xの値は変えずに<span class="marker">10点上へ移動</span>させます。<br>
+          その後、すべての点を使って<span class="red">回帰直線をもう一度引き直します</span>。
+        </div>
+
+        <div class="question">
+          赤い点を10点上げたとき、その点の残差はどうなると考える？
+        </div>
+        <label class="choice"><input type="radio" name="u2p4" value="plus10"> 必ず10増える</label>
+        <label class="choice"><input type="radio" name="u2p4" value="less10"> 10より小さく増える可能性がある</label>
+        <label class="choice"><input type="radio" name="u2p4" value="more10"> 10より大きく増える可能性がある</label>
+        <label class="choice"><input type="radio" name="u2p4" value="same"> 変わらない</label>
+
+        <p><b>そう考えた理由</b></p>
+        <textarea id="u2r4" placeholder="動くのは赤い点だけ？ 回帰直線はそのまま？"></textarea>
+        <div class="actions"><button onclick="u2run4()">実行してBEFORE / AFTERを確認</button></div>
+      </div>
+
+      <div class="panel">
+        <div id="residualSignGraphic"></div>
+      </div>
+    </div>
+
+    <div id="u2res4" class="result hidden"></div>
+  </section>
+
+
+  <section id="u2m5" class="mission hidden">
+    <div class="play-hero">
+      <h2>🏆 FINAL STAGE｜PREDICTION LAB</h2>
+      <p><b>条件を保ったまま、ばらつきと予測を変えろ！</b><br>
+      標準偏差と回帰直線を「数字」ではなく、動きとしてつかもう。</p>
+    </div>
+
+    <div class="lab-switch">
+      <button id="sdLabBtn" class="active" onclick="showU2Lab('sd')">📊 標準偏差 LAB</button>
+      <button id="regLabBtn" onclick="showU2Lab('reg')">📈 回帰直線 LAB</button>
+    </div>
+
+    <div id="sdLab" class="panel">
+      <div class="lab-title">
+        <h3>標準偏差 LAB｜平均60点を保ったまま、ばらつきを変えろ！</h3>
+        <button class="alt" onclick="resetSdLab()">↻ リセット</button>
+      </div>
+
+      <div class="lab-switch">
+        <button id="sdModeSmall" class="active" onclick="setSdMode('small')">MISSION A｜標準偏差を5以下</button>
+        <button id="sdModeLarge" onclick="setSdMode('large')">MISSION B｜標準偏差を20以上</button>
+      </div>
+
+      <div id="sdChallengeText" class="challenge-box"></div>
+
+      <div class="sd-lab-grid">
+        <div>
+          <div class="mini-label">10人の得点を変更</div>
+          <div id="sdInputs" class="score-lab-inputs"></div>
+          <div id="sdConditions" class="condition-list"></div>
+          <div id="sdSuccess" class="success hidden"></div>
+        </div>
+
+        <div>
+          <div class="mini-label">得点の散らばり</div>
+          <div id="sdStrip" class="score-strip"></div>
+          <div class="metric-grid">
+            <div class="metric"><small>平均値</small><b id="sdMean">60.0</b></div>
+            <div class="metric"><small>標準偏差</small><b id="sdValue">0.0</b></div>
+            <div class="metric"><small>最小値</small><b id="sdMin">0</b></div>
+            <div class="metric"><small>最大値</small><b id="sdMax">0</b></div>
+          </div>
+          <div class="free-note" style="margin-top:12px">
+            <b>👀 観察ポイント</b><br>
+            平均値が同じでも、みんなの得点を平均付近に集めると標準偏差は小さくなり、
+            平均から離すと標準偏差は大きくなる。
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="regLab" class="panel hidden">
+      <div class="lab-title">
+        <h3>回帰直線 LAB｜相関を保ったまま「予測から外れた1人」を作れ！</h3>
+        <button class="alt" onclick="resetRegLab()">↻ リセット</button>
+      </div>
+
+      <div class="challenge-box">
+        <b>MISSION</b><br>
+        <span class="marker">点は10個のまま</span>、正の相関を
+        <span class="red">r ≧ 0.75</span>に保ちながら、
+        <span class="red">赤い点の残差を＋15以上</span>にせよ！<br>
+        動かせるのは赤い点だけ。回帰直線そのものも動くことに注目！
+      </div>
+
+      <div class="row">
+        <div>
+          <div id="u2RegPlay"></div>
+          <div class="regression-legend">
+            <span class="legend-line"><i></i> 回帰直線</span>
+            <span class="legend-line"><i class="red"></i> 赤い点の残差</span>
+          </div>
+          <div class="reg-lab-note">
+            赤い点をドラッグできます。<br>
+            <b>「点を上げる」だけでなく、相関係数・回帰直線・残差がどう同時に変わるか</b>を見よう。
+          </div>
+        </div>
+
+        <div>
+          <div class="metric-grid">
+            <div class="metric"><small>相関係数 r</small><b id="u2RegR">0.00</b></div>
+            <div class="metric"><small>回帰直線</small><b id="u2RegEq" style="font-size:.92rem">—</b></div>
+            <div class="metric"><small>予測値</small><b id="u2RegPred">—</b></div>
+            <div class="metric"><small>残差</small><b id="u2RegResid">—</b></div>
+          </div>
+          <div id="u2RegConditions" class="condition-list"></div>
+          <div id="u2RegSuccess" class="success hidden"></div>
+
+          <div class="free-note" style="margin-top:12px">
+            <b>🎯 ここで育てたいイメージ</b><br>
+            回帰直線は固定された線ではない。<br>
+            <span class="red">1点を動かすと、線そのものも少し動く。</span><br>
+            残差は「その新しい回帰直線」と実際の点との差で決まる。
+          </div>
+        </div>
+      </div>
+    </div>
   </section>
 </div>
 
 </main>
 <script>
 const codes={1:"27",2:"48",3:"73"};
-const unlocked={1:true,2:false,3:false,4:false};
+const unlocked={1:true,2:false,3:false,4:false,5:false};
 
 const A=[41,48,52,56,63,65,67,70,72,74];
 const B=[41,48,52,56,63,65,67,70,72,84];
@@ -276,16 +760,18 @@ function hideAll(){["home","lesson1","lesson2"].forEach(id=>document.getElementB
 function home(){hideAll();document.getElementById("home").classList.remove("hidden")}
 function openLesson(n){
   hideAll();document.getElementById("lesson"+n).classList.remove("hidden");
+  if(n===2){ initLesson2(); }
   if(n===1){
     render1(A,false);
     renderSc("sc2",S2a,S2a.length-1);document.getElementById("rv2").textContent=corr(S2a).toFixed(2);
     renderSc("sc3",S3a,S3a.length-1);document.getElementById("rv3").textContent=corr(S3a).toFixed(2);
     renderSc("sc4",S4a,S4a.length-1);document.getElementById("rv4").textContent=corr(S4a).toFixed(2);
+    if(unlocked[5]) initPlayground();
   }
 }
 function showM(n){
   if(!unlocked[n])return;
-  [1,2,3,4].forEach(i=>document.getElementById("m"+i).classList.add("hidden"));
+  [1,2,3,4,5].forEach(i=>document.getElementById("m"+i).classList.add("hidden"));
   document.getElementById("m"+n).classList.remove("hidden");
   window.scrollTo({top:0,behavior:"smooth"});
 }
@@ -294,7 +780,7 @@ function unlock(n){
   if(val===codes[n]){
     unlocked[n+1]=true;
     document.getElementById("t"+(n+1)).classList.remove("locked");
-    document.getElementById("prog").style.width=((n+1)*25)+"%";
+    document.getElementById("prog").style.width=((n+1)*20)+"%";
     showM(n+1);
   }else e.textContent="コードが違います。先生の説明を聞こう！";
 }
@@ -331,7 +817,7 @@ function boxSVG(a){
     <line x1="${X(s.max)}" y1="82" x2="${X(s.max)}" y2="118" stroke="#173a63" stroke-width="4"/>
     <rect x="${X(s.q1)}" y="62" width="${X(s.q3)-X(s.q1)}" height="76" fill="#dff1ff" stroke="#2f80ed" stroke-width="4"/>
     <line x1="${X(s.med)}" y1="62" x2="${X(s.med)}" y2="138" stroke="#e84f5f" stroke-width="5"/>
-    <text x="${X(s.mean)}" y="48" text-anchor="middle" fill="#2dbb7d" font-size="26" font-weight="900">×</text>${ticks}
+    <text x="${X(s.mean)}" y="48" text-anchor="middle" fill="#e84f5f" font-size="26" font-weight="900">×</text>${ticks}
   </svg>`;
 }
 function corr(P){
@@ -405,8 +891,711 @@ function run4(){
   const p1=`<span class="marker"><span class="red">問題数は非常に多いのに、得点は低い</span></span>1点を除く。`;
   const p2=`赤い点は<span class="red">右下</span>にあり、全体の<span class="marker">右上がりの並びを崩している</span>。`;
   const p3=`この場合は赤い点を除くと点が直線に近づき、正の相関は<span class="green">強くなる</span>。`;
-  res4.innerHTML=resultHTML(map[z[0]],z[1],actual,p1,p2,p3);res4.classList.remove("hidden");
+  res4.innerHTML=resultHTML(map[z[0]],z[1],actual,p1,p2,p3)
+    + `<div style="margin-top:16px;text-align:center">
+         <button onclick="showM(5)">🏆 4問クリア！ FINAL STAGEへ</button>
+       </div>`;
+  res4.classList.remove("hidden");
+  unlocked[5]=true;
+  document.getElementById("t5").classList.remove("locked");
+  document.getElementById("prog").style.width="100%";
+  initPlayground();
 }
+
+/* ===== FINAL STAGE : DATA PLAYGROUND ===== */
+let boxMode="short";
+let boxData=[];
+let boxBaseline=[];
+const boxStartShort=[10,20,30,40,50,50,60,70,80,90];
+const boxStartLong=[10,47,48,49,50,50,51,52,53,90];
+
+function initPlayground(){
+  setBoxMode(boxMode);
+  setScatterMode(scatterMode);
+}
+function showLab(kind){
+  const box=kind==="box";
+  document.getElementById("boxLab").classList.toggle("hidden",!box);
+  document.getElementById("scatterLab").classList.toggle("hidden",box);
+  document.getElementById("boxLabBtn").classList.toggle("active",box);
+  document.getElementById("scatterLabBtn").classList.toggle("active",!box);
+  if(!box) renderPlayScatter();
+}
+function setBoxMode(mode){
+  boxMode=mode;
+  document.getElementById("boxModeShort").classList.toggle("active",mode==="short");
+  document.getElementById("boxModeLong").classList.toggle("active",mode==="long");
+  boxBaseline=[...(mode==="short"?boxStartShort:boxStartLong)];
+  boxData=[...boxBaseline];
+  const text=mode==="short"
+    ? `<b>MISSION A</b><br>
+       10個のデータを変えて、次の条件を<b>すべて保ったまま</b>、
+       <span class="red">箱の長さを10以下</span>にせよ！<br>
+       <span class="marker">平均値50・中央値50・最小値10・最大値90</span>`
+    : `<b>MISSION B</b><br>
+       10個のデータを変えて、次の条件を<b>すべて保ったまま</b>、
+       <span class="red">箱の長さを60以上</span>にせよ！<br>
+       <span class="marker">平均値50・中央値50・最小値10・最大値90</span>`;
+  document.getElementById("boxChallengeText").innerHTML=text;
+  renderBoxInputs(); updateBoxLab();
+}
+function resetBoxChallenge(){setBoxMode(boxMode)}
+function renderBoxInputs(){
+  document.getElementById("boxInputs").innerHTML=boxData.map((v,i)=>
+    `<input type="number" min="0" max="100" step="1" value="${v}" aria-label="データ${i+1}"
+      oninput="changeBoxValue(${i},this.value)">`).join("");
+}
+function changeBoxValue(i,val){
+  const n=Number(val);
+  if(!Number.isFinite(n))return;
+  boxData[i]=Math.max(0,Math.min(100,n));
+  updateBoxLab();
+}
+function boxIQR(a){const s=q(a);return s.q3-s.q1}
+function boxLabSVG(a){
+  const s=q(a),W=520,H=170,p=32,X=v=>p+v/100*(W-2*p),y=82;
+  let ticks="";
+  for(let t=0;t<=100;t+=20)ticks+=`<text x="${X(t)}" y="152" text-anchor="middle" fill="#748396" font-size="11">${t}</text>`;
+  return `<svg viewBox="0 0 ${W} ${H}">
+    <line x1="${X(s.min)}" y1="${y}" x2="${X(s.max)}" y2="${y}" stroke="#173a63" stroke-width="4"/>
+    <line x1="${X(s.min)}" y1="66" x2="${X(s.min)}" y2="98" stroke="#173a63" stroke-width="4"/>
+    <line x1="${X(s.max)}" y1="66" x2="${X(s.max)}" y2="98" stroke="#173a63" stroke-width="4"/>
+    <rect x="${X(s.q1)}" y="48" width="${Math.max(1,X(s.q3)-X(s.q1))}" height="68" fill="#dff1ff" stroke="#2f80ed" stroke-width="4"/>
+    <line x1="${X(s.med)}" y1="48" x2="${X(s.med)}" y2="116" stroke="#e84f5f" stroke-width="5"/>
+    <text x="${X(s.mean)}" y="36" text-anchor="middle" fill="#e84f5f" font-size="27" font-weight="900">×</text>
+    ${ticks}
+  </svg>`;
+}
+function updateBoxLab(){
+  const s=q(boxData),iqr=s.q3-s.q1;
+  document.getElementById("boxStartChart").innerHTML=boxLabSVG(boxBaseline);
+  document.getElementById("boxNowChart").innerHTML=boxLabSVG(boxData);
+  document.getElementById("sortedBoxData").innerHTML=[...boxData].sort((a,b)=>a-b)
+    .map(v=>`<span>${Number.isInteger(v)?v:v.toFixed(1)}</span>`).join("");
+
+  const checks=[
+    ["平均値 50",Math.abs(s.mean-50)<=0.05,`現在 ${s.mean.toFixed(1)}`],
+    ["中央値 50",Math.abs(s.med-50)<=0.05,`現在 ${s.med.toFixed(1)}`],
+    ["最小値 10",Math.abs(s.min-10)<=0.05,`現在 ${s.min}`],
+    ["最大値 90",Math.abs(s.max-90)<=0.05,`現在 ${s.max}`],
+    [boxMode==="short"?"箱の長さ ≤ 10":"箱の長さ ≥ 60",
+      boxMode==="short"?iqr<=10:iqr>=60,`現在 ${iqr.toFixed(1)}`]
+  ];
+  document.getElementById("boxConditions").innerHTML=checks.map(c=>
+    `<div class="condition ${c[1]?"ok":"ng"}">${c[1]?"✅":"⬜"} ${c[0]}<br><small>${c[2]}</small></div>`).join("");
+  const ok=checks.every(c=>c[1]);
+  const suc=document.getElementById("boxSuccess");
+  suc.classList.toggle("hidden",!ok);
+  if(ok){
+    suc.innerHTML=boxMode==="short"
+      ? `🎉 CLEAR！ 平均値・中央値・最小値・最大値が同じでも、<b>中央50％の散らばり</b>を変えると箱は短くできる！`
+      : `🎉 CLEAR！ 同じ平均値・中央値・最小値・最大値でも、<b>データの散らばり方</b>で箱の形はここまで変わる！`;
+  }
+}
+
+/* --- scatter playground --- */
+let scatterMode="strong";
+let playPoints=[];
+let scatterBaseline=[];
+let movedIndices=new Set();
+let selectedPoint=-1;
+let draggingPoint=-1;
+
+const scatterStartStrong=[
+  [1,5.2],[2,2.2],[3,7.0],[4,3.8],[5,8.2],
+  [6,3.0],[7,6.4],[8,5.0],[9,4.2],[10,7.4]
+];
+const scatterStartOne=[
+  [2,2.0],[2.5,2.4],[3,3.2],[3.5,3.6],[4,4.0],
+  [4.5,4.3],[5,5.1],[5.5,5.4],[6,6.2],[10,10.0]
+];
+
+function setScatterMode(mode){
+  scatterMode=mode;
+  ["Strong","One","Free"].forEach(x=>document.getElementById("scatterMode"+x)?.classList.remove("active"));
+  const id=mode==="strong"?"scatterModeStrong":mode==="one"?"scatterModeOne":"scatterModeFree";
+  document.getElementById(id).classList.add("active");
+  const base=mode==="one"?scatterStartOne:scatterStartStrong;
+  scatterBaseline=base.map(p=>[...p]);
+  playPoints=base.map(p=>[...p]);
+  movedIndices=new Set(); selectedPoint=-1; draggingPoint=-1;
+
+  document.getElementById("scatterChallengeText").innerHTML=
+    mode==="strong"
+    ? `<b>MISSION A</b><br>点の数を<span class="marker">10個のまま</span>、
+       点を動かして<span class="red">相関係数 r を0.85以上</span>にせよ！<br>
+       どんな並びにすれば「強い正の相関」になる？`
+    : mode==="one"
+    ? `<b>MISSION B</b><br><span class="marker">動かしてよいのは1点だけ</span>。
+       その1点だけで、強い正の相関を<span class="red">|r| ≤ 0.20</span>まで崩せ！<br>
+       1点が全体に与える影響をイメージしよう。`
+    : `<b>FREE</b><br>ここでは条件なし。点を動かす・追加する・削除するを自由に試して、
+       <span class="red">相関係数がどう変化するか</span>観察しよう。`;
+  renderPlayScatter();
+}
+function resetScatterChallenge(){setScatterMode(scatterMode)}
+function scatterXY(evt,svg){
+  const r=svg.getBoundingClientRect();
+  const W=600,H=390,p=48;
+  const sx=(evt.clientX-r.left)/r.width*W;
+  const sy=(evt.clientY-r.top)/r.height*H;
+  const x=(sx-p)/(W-2*p)*10;
+  const y=(H-p-sy)/(H-2*p)*10;
+  return [Math.max(0,Math.min(10,x)),Math.max(0,Math.min(10,y))];
+}
+function renderPlayScatter(){
+  const W=600,H=390,p=48,X=x=>p+x/10*(W-2*p),Y=y=>H-p-y/10*(H-2*p);
+  let grid="";
+  for(let t=0;t<=10;t+=2){
+    grid+=`<line x1="${X(t)}" y1="${p}" x2="${X(t)}" y2="${H-p}" stroke="#edf2f6"/>
+      <line x1="${p}" y1="${Y(t)}" x2="${W-p}" y2="${Y(t)}" stroke="#edf2f6"/>
+      <text x="${X(t)}" y="${H-18}" text-anchor="middle" fill="#748396" font-size="12">${t}</text>
+      <text x="30" y="${Y(t)+4}" text-anchor="middle" fill="#748396" font-size="12">${t}</text>`;
+  }
+  const dots=playPoints.map((v,i)=>{
+    const sel=i===selectedPoint;
+    return `<circle data-i="${i}" cx="${X(v[0])}" cy="${Y(v[1])}" r="${sel?11:8}"
+      fill="${sel?"#e84f5f":"#2f80ed"}" stroke="white" stroke-width="3"
+      style="cursor:grab"/>`;
+  }).join("");
+  const host=document.getElementById("playScatter");
+  host.innerHTML=`<svg id="playScatterSvg" viewBox="0 0 ${W} ${H}">
+    ${grid}
+    <line x1="${p}" y1="${H-p}" x2="${W-p}" y2="${H-p}" stroke="#748396"/>
+    <line x1="${p}" y1="${p}" x2="${p}" y2="${H-p}" stroke="#748396"/>
+    ${dots}</svg>`;
+  const svg=document.getElementById("playScatterSvg");
+  svg.querySelectorAll("circle").forEach(c=>{
+    c.addEventListener("pointerdown",e=>{
+      e.preventDefault();
+      draggingPoint=Number(c.dataset.i);selectedPoint=draggingPoint;
+      svg.setPointerCapture(e.pointerId);renderPlayScatter();
+    });
+  });
+  svg.addEventListener("pointermove",e=>{
+    if(draggingPoint<0)return;
+    const [x,y]=scatterXY(e,svg);
+    playPoints[draggingPoint]=[Number(x.toFixed(2)),Number(y.toFixed(2))];
+    movedIndices.add(draggingPoint);
+    renderPlayScatter();
+  });
+  svg.addEventListener("pointerup",()=>{draggingPoint=-1});
+  svg.addEventListener("pointercancel",()=>{draggingPoint=-1});
+  updateScatterStatus();
+}
+function addPlayPoint(){
+  playPoints.push([5,5]);selectedPoint=playPoints.length-1;
+  renderPlayScatter();
+}
+function deleteSelectedPoint(){
+  if(selectedPoint<0||playPoints.length<=2)return;
+  playPoints.splice(selectedPoint,1);selectedPoint=-1;
+  movedIndices=new Set();renderPlayScatter();
+}
+function updateScatterStatus(){
+  const r=playPoints.length>=2?corr(playPoints):0;
+  document.getElementById("playPointCount").textContent=playPoints.length;
+  document.getElementById("playR").textContent=Number.isFinite(r)?r.toFixed(2):"—";
+  document.getElementById("absR").textContent=Number.isFinite(r)?Math.abs(r).toFixed(2):"—";
+  document.getElementById("movedCount").textContent=movedIndices.size;
+
+  let checks=[];
+  if(scatterMode==="strong"){
+    checks=[
+      ["点の数 = 10",playPoints.length===10,`現在 ${playPoints.length}`],
+      ["r ≥ 0.85",Number.isFinite(r)&&r>=0.85,`現在 ${Number.isFinite(r)?r.toFixed(2):"—"}`]
+    ];
+  }else if(scatterMode==="one"){
+    checks=[
+      ["点の数 = 10",playPoints.length===10,`現在 ${playPoints.length}`],
+      ["動かした点 = 1",movedIndices.size===1,`現在 ${movedIndices.size}`],
+      ["|r| ≤ 0.20",Number.isFinite(r)&&Math.abs(r)<=0.20,`現在 ${Number.isFinite(r)?Math.abs(r).toFixed(2):"—"}`]
+    ];
+  }else{
+    checks=[["FREE実験中",true,`r = ${Number.isFinite(r)?r.toFixed(2):"—"}`]];
+  }
+  document.getElementById("scatterConditions").innerHTML=checks.map(c=>
+    `<div class="condition ${c[1]?"ok":"ng"}">${c[1]?"✅":"⬜"} ${c[0]}<br><small>${c[2]}</small></div>`).join("");
+  const ok=checks.every(c=>c[1]);
+  const suc=document.getElementById("scatterSuccess");
+  suc.classList.toggle("hidden",scatterMode==="free"||!ok);
+  if(ok&&scatterMode!=="free"){
+    suc.innerHTML=scatterMode==="strong"
+      ? `🎉 CLEAR！ 点を<span class="marker">右上がりの直線に近い並び</span>にすると、正の相関は強くなる！`
+      : `🎉 CLEAR！ <b>たった1点</b>でも、位置によって相関係数を大きく変えられる！`;
+  }
+}
+
+/* ===== データ分析② ===== */
+const u2Codes={1:"36",2:"54",3:"82"};
+const u2Unlocked={1:true,2:false,3:false,4:false,5:false};
+
+const sdA=[30,54,56,58,59,61,62,64,66,90];
+const sdB=[30,35,40,50,55,65,70,80,85,90];
+
+const reg2Pts=[[1,54],[2,62],[3,64],[4,71],[5,74],[6,81],[7,84],[8,90]];
+
+function mean(a){return a.reduce((s,v)=>s+v,0)/a.length}
+function popSd(a){
+  const m=mean(a);
+  return Math.sqrt(a.reduce((s,v)=>s+(v-m)*(v-m),0)/a.length)
+}
+function regression(P){
+  const xs=P.map(p=>p[0]),ys=P.map(p=>p[1]);
+  const mx=mean(xs),my=mean(ys);
+  let num=0,den=0;
+  P.forEach(([x,y])=>{num+=(x-mx)*(y-my);den+=(x-mx)*(x-mx)});
+  const b=den===0?0:num/den;
+  const a=my-b*mx;
+  return {a,b};
+}
+function predY(P,x){
+  const g=regression(P);
+  return g.a+g.b*x;
+}
+function u2Pick(n){
+  const el=document.querySelector(`input[name="u2p${n}"]:checked`);
+  return el?el.value:null;
+}
+function u2Need(n){
+  const p=u2Pick(n),r=document.getElementById(`u2r${n}`).value.trim();
+  if(!p||!r){alert("予想と理由を入力してから実行しよう！");return null}
+  return [p,r];
+}
+function showM2(n){
+  if(!u2Unlocked[n])return;
+  [1,2,3,4,5].forEach(i=>document.getElementById("u2m"+i).classList.add("hidden"));
+  document.getElementById("u2m"+n).classList.remove("hidden");
+  if(n===5){initU2Final();}
+  window.scrollTo({top:0,behavior:"smooth"});
+}
+function u2unlock(n){
+  const val=document.getElementById(`u2c${n}`).value.trim();
+  const err=document.getElementById(`u2e${n}`);
+  if(val===u2Codes[n]){
+    u2Unlocked[n+1]=true;
+    document.getElementById(`u2t${n+1}`).classList.remove("locked");
+    document.getElementById("prog2").style.width=((n+1)*20)+"%";
+    showM2(n+1);
+  }else{
+    err.textContent="コードが違います。先生の説明を聞こう！";
+  }
+}
+
+
+function sdCompareHTML(showStats=false){
+  const draw=(arr,label)=>{
+    const W=760,H=205,p=52,min=20,max=100;
+    const X=v=>p+(v-min)/(max-min)*(W-2*p);
+    let ticks="";
+    for(let t=20;t<=100;t+=10){
+      ticks+=`<line x1="${X(t)}" y1="138" x2="${X(t)}" y2="147" stroke="#7b8ea2" stroke-width="1.5"/>
+      <text x="${X(t)}" y="171" text-anchor="middle" fill="#748396" font-size="15">${t}</text>`;
+    }
+    const lanes={};
+    const dots=arr.map(v=>{
+      lanes[v]=(lanes[v]||0)+1;
+      const level=lanes[v]-1;
+      return `<circle cx="${X(v)}" cy="${122-level*24}" r="10" fill="#2f80ed" stroke="white" stroke-width="3"/>`;
+    }).join("");
+    const stats=showStats
+      ? `<div class="stats" style="max-width:460px;margin:10px auto 0">
+           <div class="stat"><small>平均</small><b>${mean(arr).toFixed(1)}</b></div>
+           <div class="stat"><small>標準偏差</small><b>${popSd(arr).toFixed(1)}</b></div>
+         </div>`
+      : `<div style="text-align:center;color:#748396;font-weight:800;margin-top:8px">
+           平均60・最低30・最高90
+         </div>`;
+    return `<div class="sd-class" style="margin-bottom:14px">
+      <div style="font-size:1.2rem;font-weight:900;color:#173a63;margin-bottom:4px">${label}</div>
+      <svg viewBox="0 0 ${W} ${H}" style="width:100%;max-height:230px">
+        <line x1="${p}" y1="138" x2="${W-p}" y2="138" stroke="#8ba0b3" stroke-width="3"/>
+        ${ticks}${dots}
+      </svg>
+      ${stats}
+    </div>`;
+  };
+  document.getElementById("sdCompare").innerHTML=
+    `<div>${draw(sdA,"A組")}${draw(sdB,"B組")}</div>`;
+}
+
+function m2ThoughtSVG(after=false){
+  const W=620,H=390,p=50;
+  const X=x=>p+x/10*(W-2*p);
+  const Y=y=>H-p-(y-40)/60*(H-2*p);
+  const generic=[[1,54],[2,58],[3,67],[5,77],[6,79],[8,91],[9,94]];
+  const A=[4,82],B=[7,82];
+  let grid="";
+  for(let x=0;x<=10;x+=2){
+    grid+=`<line x1="${X(x)}" y1="${p}" x2="${X(x)}" y2="${H-p}" stroke="#eef3f7"/>
+    <text x="${X(x)}" y="${H-18}" text-anchor="middle" fill="#748396" font-size="12">${x}</text>`;
+  }
+  for(let y=40;y<=100;y+=10){
+    grid+=`<line x1="${p}" y1="${Y(y)}" x2="${W-p}" y2="${Y(y)}" stroke="#eef3f7"/>
+    <text x="27" y="${Y(y)+4}" text-anchor="middle" fill="#748396" font-size="12">${y}</text>`;
+  }
+  const line=`<line x1="${X(0)}" y1="${Y(50)}" x2="${X(10)}" y2="${Y(100)}" stroke="#173a63" stroke-width="4"/>`;
+  const pts=generic.map(v=>`<circle cx="${X(v[0])}" cy="${Y(v[1])}" r="7" fill="#9bb7cf" stroke="white" stroke-width="2"/>`).join("");
+  let guides="";
+  if(after){
+    const predA=70,predB=85;
+    guides=`
+      <line x1="${X(A[0])}" y1="${Y(predA)}" x2="${X(A[0])}" y2="${Y(A[1])}" stroke="#e84f5f" stroke-width="5" stroke-dasharray="7 5"/>
+      <line x1="${X(B[0])}" y1="${Y(predB)}" x2="${X(B[0])}" y2="${Y(B[1])}" stroke="#2f80ed" stroke-width="5" stroke-dasharray="7 5"/>
+      <circle cx="${X(A[0])}" cy="${Y(predA)}" r="6" fill="#e84f5f"/>
+      <circle cx="${X(B[0])}" cy="${Y(predB)}" r="6" fill="#2f80ed"/>
+      <text x="${X(A[0])-18}" y="${Y(predA)-10}" fill="#e84f5f" font-weight="900">予測70</text>
+      <text x="${X(B[0])+10}" y="${Y(predB)-8}" fill="#2f80ed" font-weight="900">予測85</text>`;
+  }
+  return `<svg viewBox="0 0 ${W} ${H}">
+    ${grid}
+    <line x1="${p}" y1="${H-p}" x2="${W-p}" y2="${H-p}" stroke="#748396"/>
+    <line x1="${p}" y1="${p}" x2="${p}" y2="${H-p}" stroke="#748396"/>
+    ${line}${pts}${guides}
+    <circle cx="${X(A[0])}" cy="${Y(A[1])}" r="10" fill="#e84f5f" stroke="white" stroke-width="3"/>
+    <text x="${X(A[0])-18}" y="${Y(A[1])-15}" fill="#e84f5f" font-weight="900">A</text>
+    <circle cx="${X(B[0])}" cy="${Y(B[1])}" r="10" fill="#2f80ed" stroke="white" stroke-width="3"/>
+    <text x="${X(B[0])+12}" y="${Y(B[1])-15}" fill="#2f80ed" font-weight="900">B</text>
+    <text x="${W-150}" y="55" fill="#173a63" font-weight="900">回帰直線</text>
+  </svg>`;
+}
+
+function m3ResidualSVG(after=false){
+  const W=620,H=390,p=50;
+  const X=x=>p+x/10*(W-2*p);
+  const Y=y=>H-p-(y-40)/60*(H-2*p);
+  const pts=[
+    {name:"A",x:3,y:74,pred:65,color:"#e84f5f"},
+    {name:"B",x:6,y:68,pred:80,color:"#2f80ed"},
+    {name:"C",x:8,y:93,pred:90,color:"#2dbb7d"}
+  ];
+  let grid="";
+  for(let x=0;x<=10;x+=2){
+    grid+=`<line x1="${X(x)}" y1="${p}" x2="${X(x)}" y2="${H-p}" stroke="#eef3f7"/>
+    <text x="${X(x)}" y="${H-18}" text-anchor="middle" fill="#748396" font-size="12">${x}</text>`;
+  }
+  for(let y=40;y<=100;y+=10){
+    grid+=`<line x1="${p}" y1="${Y(y)}" x2="${W-p}" y2="${Y(y)}" stroke="#eef3f7"/>
+    <text x="27" y="${Y(y)+4}" text-anchor="middle" fill="#748396" font-size="12">${y}</text>`;
+  }
+  let extras="";
+  if(after){
+    extras=pts.map(d=>`
+      <line x1="${X(d.x)}" y1="${Y(d.pred)}" x2="${X(d.x)}" y2="${Y(d.y)}"
+        stroke="${d.color}" stroke-width="5" stroke-dasharray="7 5"/>
+      <text x="${X(d.x)+10}" y="${(Y(d.pred)+Y(d.y))/2}" fill="${d.color}" font-weight="900">
+        ${Math.abs(d.y-d.pred)}
+      </text>`).join("");
+  }
+  const dots=pts.map(d=>`
+    <circle cx="${X(d.x)}" cy="${Y(d.y)}" r="10" fill="${d.color}" stroke="white" stroke-width="3"/>
+    <text x="${X(d.x)+12}" y="${Y(d.y)-12}" fill="${d.color}" font-weight="900">${d.name}</text>`).join("");
+  return `<svg viewBox="0 0 ${W} ${H}">
+    ${grid}
+    <line x1="${p}" y1="${H-p}" x2="${W-p}" y2="${H-p}" stroke="#748396"/>
+    <line x1="${p}" y1="${p}" x2="${p}" y2="${H-p}" stroke="#748396"/>
+    <line x1="${X(0)}" y1="${Y(50)}" x2="${X(10)}" y2="${Y(100)}" stroke="#173a63" stroke-width="4"/>
+    ${extras}${dots}
+    <text x="${W-150}" y="55" fill="#173a63" font-weight="900">回帰直線</text>
+  </svg>`;
+}
+
+const m4BeforePts=[[1,52],[2,59],[3,63],[4,69],[5,74],[6,80],[7,84],[8,88]];
+
+function m4RegressionSVG(after=false){
+  const W=620,H=390,p=50;
+  const X=x=>p+x/9*(W-2*p);
+  const Y=y=>H-p-(y-40)/65*(H-2*p);
+  const before=m4BeforePts.map(v=>[...v]);
+  const afterPts=m4BeforePts.map(v=>[...v]);
+  afterPts[7][1]+=10;
+  const gb=regression(before),ga=regression(afterPts);
+  let grid="";
+  for(let x=0;x<=8;x+=2){
+    grid+=`<line x1="${X(x)}" y1="${p}" x2="${X(x)}" y2="${H-p}" stroke="#eef3f7"/>
+    <text x="${X(x)}" y="${H-18}" text-anchor="middle" fill="#748396" font-size="12">${x}</text>`;
+  }
+  for(let y=40;y<=100;y+=10){
+    grid+=`<line x1="${p}" y1="${Y(y)}" x2="${W-p}" y2="${Y(y)}" stroke="#eef3f7"/>
+    <text x="27" y="${Y(y)+4}" text-anchor="middle" fill="#748396" font-size="12">${y}</text>`;
+  }
+  const lineBefore=`<line x1="${X(0)}" y1="${Y(gb.a)}" x2="${X(8.7)}" y2="${Y(gb.a+gb.b*8.7)}"
+    stroke="${after?'#9aa9b6':'#173a63'}" stroke-width="4" ${after?'stroke-dasharray="8 6"':''}/>`;
+  let lineAfter="",residualLine="",movedGhost="";
+  if(after){
+    lineAfter=`<line x1="${X(0)}" y1="${Y(ga.a)}" x2="${X(8.7)}" y2="${Y(ga.a+ga.b*8.7)}"
+      stroke="#173a63" stroke-width="4"/>`;
+    const x=8,y=98,pred=ga.a+ga.b*x;
+    residualLine=`<line x1="${X(x)}" y1="${Y(pred)}" x2="${X(x)}" y2="${Y(y)}"
+      stroke="#e84f5f" stroke-width="5" stroke-dasharray="7 5"/>`;
+  }else{
+    movedGhost=`<circle cx="${X(8)}" cy="${Y(98)}" r="10" fill="none" stroke="#e84f5f" stroke-width="3" stroke-dasharray="6 5"/>
+      <line x1="${X(8)}" y1="${Y(88)-5}" x2="${X(8)}" y2="${Y(98)+8}" stroke="#e84f5f" stroke-width="3" marker-end="url(#arrow)"/>`;
+  }
+  const pts=(after?afterPts:before).map((v,i)=>`
+    <circle cx="${X(v[0])}" cy="${Y(v[1])}" r="${i===7?10:7}"
+      fill="${i===7?'#e84f5f':'#2f80ed'}" stroke="white" stroke-width="3"/>`).join("");
+  return `<svg viewBox="0 0 ${W} ${H}">
+    <defs><marker id="arrow" markerWidth="8" markerHeight="8" refX="5" refY="3" orient="auto"><path d="M0,0 L0,6 L6,3 z" fill="#e84f5f"/></marker></defs>
+    ${grid}
+    <line x1="${p}" y1="${H-p}" x2="${W-p}" y2="${H-p}" stroke="#748396"/>
+    <line x1="${p}" y1="${p}" x2="${p}" y2="${H-p}" stroke="#748396"/>
+    ${lineBefore}${lineAfter}${residualLine}${movedGhost}${pts}
+    ${after?`<text x="350" y="63" fill="#9aa9b6" font-weight="900">BEFORE</text>
+             <text x="455" y="88" fill="#173a63" font-weight="900">AFTER</text>`:
+            `<text x="${X(8)-80}" y="${Y(98)-10}" fill="#e84f5f" font-weight="900">ここへ10点UP</text>`}
+  </svg>`;
+}
+
+function initLesson2(){
+  sdCompareHTML(false);
+  document.getElementById("regMission2").innerHTML=m2ThoughtSVG(false);
+  document.getElementById("regMission2Stats").classList.add("hidden");
+  document.getElementById("regMission2Stats").innerHTML="";
+  document.getElementById("residualCompareGraphic").innerHTML=m3ResidualSVG(false);
+  document.getElementById("residualSignGraphic").innerHTML=m4RegressionSVG(false);
+}
+
+function u2run1(){
+  const z=u2Need(1);if(!z)return;
+  const map={A:"A組",B:"B組",same:"同じ"};
+  const sA=popSd(sdA),sB=popSd(sdB);
+  sdCompareHTML(true);
+  const actual=`A組：標準偏差 <span class="green">${sA.toFixed(1)}</span><br>
+                B組：標準偏差 <span class="red">${sB.toFixed(1)}</span>`;
+  const p1=`<span class="marker">平均60・最低30・最高90</span>は両方同じ。`;
+  const p2=`A組は多くの点が<span class="green">60点付近に集まる</span>。B組は<span class="red">全体に広がっている</span>。`;
+  const p3=`標準偏差は「平均からの散らばり」。同じ平均・同じ範囲でも、<span class="red">途中のデータの集まり方</span>で変わる。`;
+  u2res1.innerHTML=resultHTML(map[z[0]],z[1],actual,p1,p2,p3);
+  u2res1.classList.remove("hidden");u2lock1.classList.remove("hidden");
+}
+function u2run2(){
+  const z=u2Need(2);if(!z)return;
+  const map={A:"Aさん",B:"Bさん",both:"2人とも",none:"どちらともいえない"};
+  document.getElementById("regMission2").innerHTML=m2ThoughtSVG(true);
+  const stats=document.getElementById("regMission2Stats");
+  stats.innerHTML=
+    `<div class="stat"><small>Aの予測値</small><b>70</b></div>
+     <div class="stat"><small>Aの実際</small><b>82</b></div>
+     <div class="stat"><small>Bの予測値</small><b>85</b></div>
+     <div class="stat"><small>Bの実際</small><b>82</b></div>`;
+  stats.classList.remove("hidden");
+  const actual=`A：予測70 → 実際82（<span class="red">予測より＋12</span>）<br>
+                B：予測85 → 実際82（<span class="blue">予測より−3</span>）`;
+  const p1=`2人とも実際の得点は<span class="marker">82点で同じ</span>。`;
+  const p2=`見るべきなのは得点そのものではなく、<span class="red">それぞれのxの位置での回帰直線</span>。`;
+  const p3=`「勉強時間が少ないのに82点だからAでは？」という<span class="marker">直感も大事</span>。
+  その直感を回帰直線で数値化すると、Aは予測70より＋12、Bは予測85より−3。だから<span class="red">「予想以上」なのはA</span>。`;
+  u2res2.innerHTML=resultHTML(map[z[0]],z[1],actual,p1,p2,p3);
+  u2res2.classList.remove("hidden");u2lock2.classList.remove("hidden");
+}
+function u2run3(){
+  const z=u2Need(3);if(!z)return;
+  const map={A:"A",B:"B",C:"C"};
+  document.getElementById("residualCompareGraphic").innerHTML=m3ResidualSVG(true);
+  const actual=`A：|74−65|＝<span class="red">9</span><br>
+                B：|68−80|＝<span class="blue">12</span><br>
+                C：|93−90|＝<span class="green">3</span>`;
+  const p1=`残差を見るときは<span class="marker">同じxの位置</span>で考える。`;
+  const p2=`点と直線の<span class="red">最短距離ではなく、縦方向の差</span>を見る。`;
+  const p3=`縦方向の差が最も大きいのは<span class="blue">B（12）</span>。`;
+  u2res3.innerHTML=resultHTML(map[z[0]],z[1],actual,p1,p2,p3);
+  u2res3.classList.remove("hidden");u2lock3.classList.remove("hidden");
+}
+function u2run4(){
+  const z=u2Need(4);if(!z)return;
+  const map={
+    plus10:"必ず10増える",
+    less10:"10より小さく増える可能性がある",
+    more10:"10より大きく増える可能性がある",
+    same:"変わらない"
+  };
+  const before=m4BeforePts.map(v=>[...v]);
+  const after=m4BeforePts.map(v=>[...v]);after[7][1]+=10;
+  const gb=regression(before),ga=regression(after);
+  const rb=before[7][1]-(gb.a+gb.b*before[7][0]);
+  const ra=after[7][1]-(ga.a+ga.b*after[7][0]);
+  const diff=ra-rb;
+  document.getElementById("residualSignGraphic").innerHTML=m4RegressionSVG(true);
+  const actual=`赤い点：88 → 98（＋10）<br>
+                残差：${rb.toFixed(1)} → <span class="red">＋${ra.toFixed(1)}</span><br>
+                残差の増加は<span class="red">約＋${diff.toFixed(1)}</span>`;
+  const p1=`赤い点だけを10点上げても、分析では<span class="marker">回帰直線をもう一度引き直す</span>。`;
+  const p2=`AFTERでは回帰直線も赤い点の方へ<span class="red">少し動いている</span>。`;
+  const p3=`点が10動いた分が、そのまま残差10になるとは限らない。<span class="red">点を動かすと基準となる線も動く</span>から。`;
+  u2res4.innerHTML=resultHTML(map[z[0]],z[1],actual,p1,p2,p3)
+    + `<div style="margin-top:16px;text-align:center">
+         <button onclick="showM2(5)">🏆 4問クリア！ FINAL STAGEへ</button>
+       </div>`;
+  u2res4.classList.remove("hidden");
+  u2Unlocked[5]=true;
+  document.getElementById("u2t5").classList.remove("locked");
+  document.getElementById("prog2").style.width="100%";
+  initU2Final();
+}
+
+/* --- 標準偏差LAB --- */
+let sdMode="small";
+let sdLabData=[];
+const sdStart=[45,50,52,56,58,62,64,68,70,75];
+
+function initU2Final(){
+  setSdMode(sdMode);
+  resetRegLab();
+}
+function showU2Lab(kind){
+  const isSd=kind==="sd";
+  document.getElementById("sdLab").classList.toggle("hidden",!isSd);
+  document.getElementById("regLab").classList.toggle("hidden",isSd);
+  document.getElementById("sdLabBtn").classList.toggle("active",isSd);
+  document.getElementById("regLabBtn").classList.toggle("active",!isSd);
+  if(!isSd) renderU2RegLab();
+}
+function setSdMode(mode){
+  sdMode=mode;
+  document.getElementById("sdModeSmall").classList.toggle("active",mode==="small");
+  document.getElementById("sdModeLarge").classList.toggle("active",mode==="large");
+  sdLabData=[...sdStart];
+  document.getElementById("sdChallengeText").innerHTML=
+    mode==="small"
+    ? `<b>MISSION A</b><br><span class="marker">平均点60を保ったまま</span>、標準偏差を<span class="red">5以下</span>にせよ！`
+    : `<b>MISSION B</b><br><span class="marker">平均点60を保ったまま</span>、標準偏差を<span class="red">20以上</span>にせよ！`;
+  renderSdInputs();updateSdLab();
+}
+function resetSdLab(){setSdMode(sdMode)}
+function renderSdInputs(){
+  document.getElementById("sdInputs").innerHTML=sdLabData.map((v,i)=>
+    `<input type="number" min="0" max="100" step="1" value="${v}" oninput="changeSdValue(${i},this.value)">`
+  ).join("");
+}
+function changeSdValue(i,val){
+  const n=Number(val);if(!Number.isFinite(n))return;
+  sdLabData[i]=Math.max(0,Math.min(100,n));updateSdLab();
+}
+function renderSdStrip(){
+  const host=document.getElementById("sdStrip");
+  const m=mean(sdLabData);
+  let dots="";
+  sdLabData.forEach((v,i)=>{
+    const left=v;
+    const top=28+(i%4)*20;
+    dots+=`<span class="dot" style="left:${left}%;top:${top}px"></span>`;
+  });
+  host.innerHTML=`<span class="meanline" style="left:${m}%"></span>${dots}`;
+}
+function updateSdLab(){
+  const m=mean(sdLabData),sd=popSd(sdLabData),mn=Math.min(...sdLabData),mx=Math.max(...sdLabData);
+  document.getElementById("sdMean").textContent=m.toFixed(1);
+  document.getElementById("sdValue").textContent=sd.toFixed(1);
+  document.getElementById("sdMin").textContent=mn.toFixed(0);
+  document.getElementById("sdMax").textContent=mx.toFixed(0);
+  renderSdStrip();
+  const checks=[
+    ["平均点 = 60",Math.abs(m-60)<=0.05,`現在 ${m.toFixed(1)}`],
+    [sdMode==="small"?"標準偏差 ≤ 5":"標準偏差 ≥ 20",
+      sdMode==="small"?sd<=5:sd>=20,`現在 ${sd.toFixed(1)}`]
+  ];
+  document.getElementById("sdConditions").innerHTML=checks.map(c=>
+    `<div class="condition ${c[1]?"ok":"ng"}">${c[1]?"✅":"⬜"} ${c[0]}<br><small>${c[2]}</small></div>`).join("");
+  const ok=checks.every(c=>c[1]);
+  const suc=document.getElementById("sdSuccess");
+  suc.classList.toggle("hidden",!ok);
+  if(ok){
+    suc.innerHTML=sdMode==="small"
+      ? `🎉 CLEAR！ 平均を変えずに、得点を平均付近へ集めると<span class="marker">標準偏差は小さくなる</span>！`
+      : `🎉 CLEAR！ 平均を変えずに、得点を平均から離すと<span class="marker">標準偏差は大きくなる</span>！`;
+  }
+}
+
+/* --- 回帰直線LAB --- */
+let u2RegPoints=[];
+let u2RegDrag=false;
+const u2RegTarget=5;
+const u2RegStart=[
+  [1,50],[2,54],[3,61],[4,64],[5,70],
+  [6,75],[7,79],[8,84],[9,91],[10,94]
+];
+
+function resetRegLab(){
+  u2RegPoints=u2RegStart.map(p=>[...p]);
+  u2RegDrag=false;
+  renderU2RegLab();
+}
+function renderU2RegLab(){
+  if(!u2RegPoints.length) resetRegLab();
+  const W=640,H=410,p=52,xmin=0,xmax=11,ymin=40,ymax=105;
+  const X=x=>p+(x-xmin)/(xmax-xmin)*(W-2*p);
+  const Y=y=>H-p-(y-ymin)/(ymax-ymin)*(H-2*p);
+  const g=regression(u2RegPoints);
+  const target=u2RegPoints[u2RegTarget];
+  const predicted=g.a+g.b*target[0];
+  const residual=target[1]-predicted;
+  let grid="";
+  for(let x=0;x<=10;x+=2){
+    grid+=`<line x1="${X(x)}" y1="${p}" x2="${X(x)}" y2="${H-p}" stroke="#eef3f7"/>
+    <text x="${X(x)}" y="${H-18}" text-anchor="middle" fill="#748396" font-size="12">${x}</text>`;
+  }
+  for(let y=40;y<=100;y+=10){
+    grid+=`<line x1="${p}" y1="${Y(y)}" x2="${W-p}" y2="${Y(y)}" stroke="#eef3f7"/>
+    <text x="28" y="${Y(y)+4}" text-anchor="middle" fill="#748396" font-size="12">${y}</text>`;
+  }
+  const x1=0,x2=11,y1=g.a+g.b*x1,y2=g.a+g.b*x2;
+  const dots=u2RegPoints.map((pt,i)=>{
+    const red=i===u2RegTarget;
+    return `<circle data-i="${i}" cx="${X(pt[0])}" cy="${Y(pt[1])}" r="${red?11:7}"
+      fill="${red?'#e84f5f':'#2f80ed'}" stroke="white" stroke-width="3"
+      style="cursor:${red?'grab':'default'}"/>`;
+  }).join("");
+  const svg=`<svg id="u2RegSvg" viewBox="0 0 ${W} ${H}" style="touch-action:none">
+    ${grid}
+    <line x1="${p}" y1="${H-p}" x2="${W-p}" y2="${H-p}" stroke="#748396"/>
+    <line x1="${p}" y1="${p}" x2="${p}" y2="${H-p}" stroke="#748396"/>
+    <line x1="${X(x1)}" y1="${Y(y1)}" x2="${X(x2)}" y2="${Y(y2)}" stroke="#173a63" stroke-width="4"/>
+    <line x1="${X(target[0])}" y1="${Y(predicted)}" x2="${X(target[0])}" y2="${Y(target[1])}"
+      stroke="#e84f5f" stroke-width="5" stroke-dasharray="7 5"/>
+    ${dots}
+  </svg>`;
+  document.getElementById("u2RegPlay").innerHTML=svg;
+
+  const r=corr(u2RegPoints);
+  document.getElementById("u2RegR").textContent=r.toFixed(2);
+  document.getElementById("u2RegEq").textContent=`y=${g.b.toFixed(1)}x+${g.a.toFixed(1)}`;
+  document.getElementById("u2RegPred").textContent=predicted.toFixed(1);
+  document.getElementById("u2RegResid").textContent=(residual>=0?"+":"")+residual.toFixed(1);
+
+  const checks=[
+    ["点の数 = 10",u2RegPoints.length===10,`現在 ${u2RegPoints.length}`],
+    ["正の相関 r ≥ 0.75",r>=0.75,`現在 ${r.toFixed(2)}`],
+    ["赤い点の残差 ≥ +15",residual>=15,`現在 ${(residual>=0?"+":"")}${residual.toFixed(1)}`]
+  ];
+  document.getElementById("u2RegConditions").innerHTML=checks.map(c=>
+    `<div class="condition ${c[1]?"ok":"ng"}">${c[1]?"✅":"⬜"} ${c[0]}<br><small>${c[2]}</small></div>`).join("");
+  const ok=checks.every(c=>c[1]);
+  const suc=document.getElementById("u2RegSuccess");
+  suc.classList.toggle("hidden",!ok);
+  if(ok){
+    suc.innerHTML=`🎉 CLEAR！ <b>正の相関を保ったまま</b>、予測から大きく外れた1点を作れた！
+      点を動かすと回帰直線自体も変わることを確認しよう。`;
+  }
+
+  const host=document.getElementById("u2RegSvg");
+  const targetCircle=host.querySelector(`circle[data-i="${u2RegTarget}"]`);
+  targetCircle.addEventListener("pointerdown",e=>{
+    e.preventDefault();u2RegDrag=true;host.setPointerCapture(e.pointerId);
+  });
+  host.addEventListener("pointermove",e=>{
+    if(!u2RegDrag)return;
+    const rect=host.getBoundingClientRect();
+    const sy=(e.clientY-rect.top)/rect.height*H;
+    let y=ymin+(H-p-sy)/(H-2*p)*(ymax-ymin);
+    y=Math.max(40,Math.min(100,y));
+    u2RegPoints[u2RegTarget][1]=Number(y.toFixed(1));
+    renderU2RegLab();
+  });
+  host.addEventListener("pointerup",()=>u2RegDrag=false);
+  host.addEventListener("pointercancel",()=>u2RegDrag=false);
+}
+
 home();
 </script>
 </body>

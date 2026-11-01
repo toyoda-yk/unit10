@@ -1,14 +1,7 @@
-WINSTEP UNIT10 データ分析 LAB v0.3.1
-
-GitHub Pagesで必要なファイル：
-- index.html  ← メインのアプリ本体
-- assets/hero.png
-- assets/data1.png
-- assets/data2.png
-
-確認用：
-- START_HERE.html  ← index.htmlと同じ内容
-- README.md
-- 00_FILE_LIST.txt
-
-GitHubには index.html と assets フォルダをアップロードしてください。
+00_FILE_LIST.txt
+README.md
+START_HERE.html
+assets/data1.png
+assets/data2.png
+assets/hero.png
+index.html
