@@ -220,6 +220,43 @@ svg{width:100%;height:auto;background:#fff;border:1px solid #e1e9f0;border-radiu
   .metric-grid{grid-template-columns:1fr 1fr}
 }
 
+/* ===== 補足解説（必要な人だけ開く） ===== */
+.lesson-goal{
+  margin:0 0 16px;padding:15px 17px;border:2px solid #bcdcf8;border-radius:17px;
+  background:linear-gradient(135deg,#f4faff,#fffdf1);line-height:1.75
+}
+.lesson-goal b{color:var(--navy)}
+.explain{
+  margin-top:13px;border:1px solid #bcd8ee;border-radius:14px;background:#f7fbff;overflow:hidden
+}
+.explain summary{
+  list-style:none;cursor:pointer;padding:12px 15px;font-weight:900;color:var(--navy);
+  background:#edf7ff;display:flex;align-items:center;gap:8px
+}
+.explain summary::-webkit-details-marker{display:none}
+.explain summary::before{content:"？";display:inline-grid;place-items:center;width:26px;height:26px;border-radius:50%;background:var(--blue);color:#fff;font-weight:900}
+.explain[open] summary{border-bottom:1px solid #cfe0ee}
+.explain-body{padding:15px;line-height:1.8;background:#fff}
+.explain-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin:10px 0}
+.explain-card{border:1px solid #dbe6ef;border-radius:12px;padding:11px;background:#fbfdff}
+.explain-card b{color:var(--navy)}
+.calc-flow{display:flex;gap:7px;align-items:stretch;flex-wrap:wrap;margin:10px 0}
+.calc-step{flex:1 1 120px;border:1px solid #dbe6ef;border-radius:12px;padding:10px;background:#fff;text-align:center;font-weight:800}
+.calc-step strong{display:block;color:var(--blue);font-size:1.05rem;margin-bottom:3px}
+.flow-arrow{display:flex;align-items:center;font-weight:900;color:var(--orange)}
+.concept-flow{display:grid;grid-template-columns:1fr auto 1fr auto 1fr;gap:8px;align-items:center;margin:12px 0}
+.concept-node{border:1px solid #dbe6ef;border-radius:13px;padding:11px;background:#fff;text-align:center;line-height:1.55}
+.concept-node strong{display:block;color:var(--navy);margin-bottom:4px}
+.concept-arrow{font-size:1.4rem;color:var(--orange);font-weight:900}
+.formula-box{margin:10px 0;padding:12px 14px;border-radius:12px;background:#fff9e8;border:1px solid #f3d77a;font-weight:900;text-align:center}
+.mini-note{margin-top:10px;padding:10px 12px;border-radius:11px;background:#f3fbf7;border-left:5px solid var(--green);line-height:1.7}
+.back-note{margin-top:12px;text-align:center;color:#687b90;font-weight:800;font-size:.92rem}
+@media(max-width:780px){
+  .explain-grid{grid-template-columns:1fr}
+  .concept-flow{grid-template-columns:1fr}
+  .concept-arrow{transform:rotate(90deg);text-align:center}
+}
+
 </style>
 </head>
 <body><main>
@@ -301,7 +338,7 @@ svg{width:100%;height:auto;background:#fff;border:1px solid #e1e9f0;border-radiu
         <label class="choice"><input type="radio" name="p2" value="down"> 弱くなる（rは0に近づく）</label>
         <label class="choice"><input type="radio" name="p2" value="same"> ほぼ変わらない</label>
         <p><b>理由</b></p><textarea id="r2" placeholder="点の並び方がどう変わるかを書こう"></textarea>
-        <div class="actions"><button onclick="run2()">訂正して確かめる</button></div>
+        <div class="actions"><button onclick="run2()">正しい位置へ動かして確かめる！</button></div>
       </div>
       <div class="panel">
         <div class="data-caption">横軸：AIドリルの問題数　／　縦軸：小テスト得点</div>
@@ -331,7 +368,7 @@ svg{width:100%;height:auto;background:#fff;border:1px solid #e1e9f0;border-radiu
         <label class="choice"><input type="radio" name="p3" value="down"> 小さくなる</label>
         <label class="choice"><input type="radio" name="p3" value="same"> ほぼ変わらない</label>
         <p><b>理由</b></p><textarea id="r3" placeholder="赤い点が全体の右上がりをどうしている？"></textarea>
-        <div class="actions"><button onclick="run3()">除いて確かめる</button></div>
+        <div class="actions"><button onclick="run3()">1点を除いて変化を確かめる！</button></div>
       </div>
       <div class="panel">
         <div class="data-caption">赤い点を除く前</div>
@@ -361,7 +398,7 @@ svg{width:100%;height:auto;background:#fff;border:1px solid #e1e9f0;border-radiu
         <label class="choice"><input type="radio" name="p4" value="down"> 弱くなる</label>
         <label class="choice"><input type="radio" name="p4" value="same"> ほぼ変わらない</label>
         <p><b>理由を具体的に</b></p><textarea id="r4" placeholder="CHALLENGEと同じ答えになるとは限らない！"></textarea>
-        <div class="actions"><button onclick="run4()">除いて結果を見る</button></div>
+        <div class="actions"><button onclick="run4()">1点を除いて相関を確かめる！</button></div>
       </div>
       <div class="panel">
         <div class="data-caption">赤い点が全体の並びをどう変えている？</div>
@@ -420,7 +457,7 @@ svg{width:100%;height:auto;background:#fff;border:1px solid #e1e9f0;border-radiu
           </div>
           <div class="free-note" style="margin-top:10px">
             <b>👀 見るのは「数値」だけじゃない。</b><br>
-            赤い線と赤い×の位置、箱の長さ、ひげの長さがどう変わったかも比べよう。
+            赤い線と赤い×の位置、四分位範囲（箱の長さ）、ひげの長さがどう変わったかも比べよう。
             <b>赤い線と×が何を示すかは、自分で思い出そう。</b>
           </div>
         </div>
@@ -483,6 +520,14 @@ svg{width:100%;height:auto;background:#fff;border:1px solid #e1e9f0;border-radiu
 
   <div class="progress"><div id="prog2" style="width:20%"></div></div>
 
+  <div class="lesson-goal">
+    <b>🎯 このアプリでつくるイメージ</b><br>
+    <span class="red">ばらつき</span>＝データは平均のまわりにどれくらい広がる？　
+    <span class="blue">予測</span>＝回帰直線からどんな値が予想できる？　
+    <span class="green">ズレ</span>＝実際の値は予測からどれくらい離れる？<br>
+    <b>予想 → 動かす → 確かめる → 理由を考える</b> をくり返して、数値とグラフの動きをつなげよう。
+  </div>
+
   <div class="lesson2-tabs">
     <button onclick="showM2(1)">MISSION 1<br><small>標準偏差</small></button>
     <button id="u2t2" class="locked" onclick="showM2(2)">MISSION 2<br><small>同じ得点の意味</small></button>
@@ -513,7 +558,29 @@ svg{width:100%;height:auto;background:#fff;border:1px solid #e1e9f0;border-radiu
 
         <p><b>そう考えた理由</b></p>
         <textarea id="u2r1" placeholder="平均・最低・最高は同じ。それでも違いがあるとしたら、図のどこ？"></textarea>
-        <div class="actions"><button onclick="u2run1()">実行して標準偏差を確認</button></div>
+        <div class="actions"><button onclick="u2run1()">予想して標準偏差を確かめる！</button></div>
+
+        <details class="explain">
+          <summary>標準偏差はどうやって求める？</summary>
+          <div class="explain-body">
+            <div class="formula-box"><span class="red">偏差</span> ＝ データの値 − 平均値　→　<b>平均値からのズレ</b></div>
+            <div class="calc-flow">
+              <div class="calc-step"><strong>① 平均</strong>平均値を求める</div>
+              <div class="flow-arrow">→</div>
+              <div class="calc-step"><strong>② 偏差</strong>平均との差を求める</div>
+              <div class="flow-arrow">→</div>
+              <div class="calc-step"><strong>③ 二乗</strong>偏差を二乗する</div>
+              <div class="flow-arrow">→</div>
+              <div class="calc-step"><strong>④ 平均</strong>二乗した値を平均する</div>
+              <div class="flow-arrow">→</div>
+              <div class="calc-step"><strong>⑤ 平方根</strong>標準偏差になる</div>
+            </div>
+            <div class="mini-note">
+              <b>標準偏差</b>は、1人1人の「平均値からのズレ（偏差）」をもとに、
+              <b>データ全体が平均のまわりにどれくらい散らばっているか</b>を表した値。
+            </div>
+          </div>
+        </details>
       </div>
 
       <div class="panel">
@@ -551,7 +618,7 @@ svg{width:100%;height:auto;background:#fff;border:1px solid #e1e9f0;border-radiu
 
         <p><b>そう考えた理由</b></p>
         <textarea id="u2r2" placeholder="同じ82点でも、回帰直線との位置関係は同じ？"></textarea>
-        <div class="actions"><button onclick="u2run2()">実行して予測値を確認</button></div>
+        <div class="actions"><button onclick="u2run2()">予想して回帰直線で確かめる！</button></div>
       </div>
 
       <div class="panel">
@@ -576,8 +643,9 @@ svg{width:100%;height:auto;background:#fff;border:1px solid #e1e9f0;border-radiu
         <div class="story">
           <div class="story-title">🎯 状況</div>
           散布図にはA・B・Cの3人が示されています。<br>
-          3人とも回帰直線から少し外れていますが、
-          <span class="marker">残差は「同じxの位置での、実際の値と予測値との差」</span>です。
+          3人とも回帰直線から少し外れています。<br>
+          <span class="marker"><span class="red">残差 ＝ 実際の値 − 回帰直線から求めた予測値</span></span>。<br>
+          同じxの位置で、点が回帰直線より上か下か、どれくらい離れているかを見ます。
         </div>
 
         <div class="question">
@@ -588,8 +656,46 @@ svg{width:100%;height:auto;background:#fff;border:1px solid #e1e9f0;border-radiu
         <label class="choice"><input type="radio" name="u2p3" value="C"> C</label>
 
         <p><b>そう考えた理由</b></p>
-        <textarea id="u2r3" placeholder="点と直線の『どの方向の差』を見ればいい？"></textarea>
-        <div class="actions"><button onclick="u2run3()">実行して残差を表示</button></div>
+        <textarea id="u2r3" placeholder="同じxの位置で、実際の値と予測値はどれくらい離れている？"></textarea>
+        <div class="actions"><button onclick="u2run3()">予想して残差を確かめる！</button></div>
+
+        <details class="explain">
+          <summary>偏差と残差は何が違う？ 変換値までつなげて見る</summary>
+          <div class="explain-body">
+            <div class="explain-grid">
+              <div class="explain-card">
+                <b>偏差</b><br>
+                データの値 − <span class="red">平均値</span><br>
+                → <b>平均値からのズレ</b>
+              </div>
+              <div class="explain-card">
+                <b>残差</b><br>
+                実際の値 − <span class="blue">予測値</span><br>
+                → <b>回帰直線（予測値）からのズレ</b>
+              </div>
+            </div>
+            <div class="mini-note">
+              どちらも「ズレ」。違うのは<b>何を基準にしているか</b>。
+              偏差は平均値、残差は回帰直線から求めた予測値が基準。
+            </div>
+
+            <div class="concept-flow">
+              <div class="concept-node"><strong>標準偏差</strong>データ全体の<br>散らばり</div>
+              <div class="concept-arrow">→</div>
+              <div class="concept-node"><strong>残差の標準偏差</strong>残差全体が<br>どれくらい散らばる？</div>
+              <div class="concept-arrow">→</div>
+              <div class="concept-node"><strong>残差の変換値</strong>その残差は<br><span class="red">標準偏差何個分？</span></div>
+            </div>
+            <div class="formula-box">
+              残差の変換値 ＝ （残差 − 残差の平均）÷ 残差の標準偏差
+            </div>
+            <div class="mini-note">
+              回帰直線を最小二乗法で求めた場合、残差の平均は0になるので、
+              <b>「この残差は、残差の標準偏差の何個分ズレている？」</b>とイメージできる。
+              例：変換値が <b>＋2.1</b> → 上方向に標準偏差約2.1個分のズレ。
+            </div>
+          </div>
+        </details>
       </div>
 
       <div class="panel">
@@ -644,6 +750,7 @@ svg{width:100%;height:auto;background:#fff;border:1px solid #e1e9f0;border-radiu
       <h2>🏆 FINAL STAGE｜PREDICTION LAB</h2>
       <p><b>条件を保ったまま、ばらつきと予測を変えろ！</b><br>
       標準偏差と回帰直線を「数字」ではなく、動きとしてつかもう。</p>
+      <div class="back-note">↩ 上のタブから、いつでも前のMISSIONに戻って確認できます。</div>
     </div>
 
     <div class="lab-switch">
@@ -832,7 +939,8 @@ function scSVG(P,h=-1){
   for(let t=0;t<=10;t+=2){
     grid+=`<line x1="${X(t)}" y1="${p}" x2="${X(t)}" y2="${H-p}" stroke="#edf2f6"/>
     <line x1="${p}" y1="${Y(t)}" x2="${W-p}" y2="${Y(t)}" stroke="#edf2f6"/>
-    <text x="${X(t)}" y="${H-18}" text-anchor="middle" fill="#748396" font-size="12">${t}</text>`;
+    <text x="${X(t)}" y="${H-18}" text-anchor="middle" fill="#748396" font-size="12">${t}</text>
+    <text x="27" y="${Y(t)+4}" text-anchor="middle" fill="#748396" font-size="12">${t}</text>`;
   }
   const dots=P.map((v,i)=>`<circle cx="${X(v[0])}" cy="${Y(v[1])}" r="${i===h?10:7}" fill="${i===h?'#e84f5f':'#2f80ed'}" stroke="white" stroke-width="2"/>`).join("");
   return `<svg viewBox="0 0 ${W} ${H}">${grid}<line x1="${p}" y1="${H-p}" x2="${W-p}" y2="${H-p}" stroke="#748396"/><line x1="${p}" y1="${p}" x2="${p}" y2="${H-p}" stroke="#748396"/>${dots}</svg>`;
@@ -930,11 +1038,11 @@ function setBoxMode(mode){
   const text=mode==="short"
     ? `<b>MISSION A</b><br>
        10個のデータを変えて、次の条件を<b>すべて保ったまま</b>、
-       <span class="red">箱の長さを10以下</span>にせよ！<br>
+       <span class="red">四分位範囲（箱の長さ）を10以下</span>にせよ！<br>
        <span class="marker">平均値50・中央値50・最小値10・最大値90</span>`
     : `<b>MISSION B</b><br>
        10個のデータを変えて、次の条件を<b>すべて保ったまま</b>、
-       <span class="red">箱の長さを60以上</span>にせよ！<br>
+       <span class="red">四分位範囲（箱の長さ）を60以上</span>にせよ！<br>
        <span class="marker">平均値50・中央値50・最小値10・最大値90</span>`;
   document.getElementById("boxChallengeText").innerHTML=text;
   renderBoxInputs(); updateBoxLab();
@@ -978,7 +1086,7 @@ function updateBoxLab(){
     ["中央値 50",Math.abs(s.med-50)<=0.05,`現在 ${s.med.toFixed(1)}`],
     ["最小値 10",Math.abs(s.min-10)<=0.05,`現在 ${s.min}`],
     ["最大値 90",Math.abs(s.max-90)<=0.05,`現在 ${s.max}`],
-    [boxMode==="short"?"箱の長さ ≤ 10":"箱の長さ ≥ 60",
+    [boxMode==="short"?"四分位範囲（箱の長さ）≤ 10":"四分位範囲（箱の長さ）≥ 60",
       boxMode==="short"?iqr<=10:iqr>=60,`現在 ${iqr.toFixed(1)}`]
   ];
   document.getElementById("boxConditions").innerHTML=checks.map(c=>
@@ -1251,6 +1359,8 @@ function m2ThoughtSVG(after=false){
     ${grid}
     <line x1="${p}" y1="${H-p}" x2="${W-p}" y2="${H-p}" stroke="#748396"/>
     <line x1="${p}" y1="${p}" x2="${p}" y2="${H-p}" stroke="#748396"/>
+    <text x="${W/2}" y="${H-2}" text-anchor="middle" fill="#53677d" font-size="14" font-weight="900">AIドリルに取り組んだ時間</text>
+    <text x="15" y="${H/2}" text-anchor="middle" fill="#53677d" font-size="14" font-weight="900" transform="rotate(-90 15 ${H/2})">小テスト得点</text>
     ${line}${pts}${guides}
     <circle cx="${X(A[0])}" cy="${Y(A[1])}" r="10" fill="#e84f5f" stroke="white" stroke-width="3"/>
     <text x="${X(A[0])-18}" y="${Y(A[1])-15}" fill="#e84f5f" font-weight="900">A</text>
@@ -1294,6 +1404,8 @@ function m3ResidualSVG(after=false){
     ${grid}
     <line x1="${p}" y1="${H-p}" x2="${W-p}" y2="${H-p}" stroke="#748396"/>
     <line x1="${p}" y1="${p}" x2="${p}" y2="${H-p}" stroke="#748396"/>
+    <text x="${W/2}" y="${H-2}" text-anchor="middle" fill="#53677d" font-size="14" font-weight="900">AIドリルに取り組んだ時間</text>
+    <text x="15" y="${H/2}" text-anchor="middle" fill="#53677d" font-size="14" font-weight="900" transform="rotate(-90 15 ${H/2})">小テスト得点</text>
     <line x1="${X(0)}" y1="${Y(50)}" x2="${X(10)}" y2="${Y(100)}" stroke="#173a63" stroke-width="4"/>
     ${extras}${dots}
     <text x="${W-150}" y="55" fill="#173a63" font-weight="900">回帰直線</text>
@@ -1365,7 +1477,7 @@ function u2run1(){
                 B組：標準偏差 <span class="red">${sB.toFixed(1)}</span>`;
   const p1=`<span class="marker">平均60・最低30・最高90</span>は両方同じ。`;
   const p2=`A組は多くの点が<span class="green">60点付近に集まる</span>。B組は<span class="red">全体に広がっている</span>。`;
-  const p3=`標準偏差は「平均からの散らばり」。同じ平均・同じ範囲でも、<span class="red">途中のデータの集まり方</span>で変わる。`;
+  const p3=`標準偏差は、<span class="marker">各データの平均からのズレ（偏差）</span>をもとにした「データ全体のばらつきの大きさ」。同じ平均・同じ範囲でも、<span class="red">途中のデータの集まり方</span>で変わる。`;
   u2res1.innerHTML=resultHTML(map[z[0]],z[1],actual,p1,p2,p3);
   u2res1.classList.remove("hidden");u2lock1.classList.remove("hidden");
 }
@@ -1396,8 +1508,8 @@ function u2run3(){
   const actual=`A：|74−65|＝<span class="red">9</span><br>
                 B：|68−80|＝<span class="blue">12</span><br>
                 C：|93−90|＝<span class="green">3</span>`;
-  const p1=`残差を見るときは<span class="marker">同じxの位置</span>で考える。`;
-  const p2=`点と直線の<span class="red">最短距離ではなく、縦方向の差</span>を見る。`;
+  const p1=`<span class="marker">残差 ＝ 実際の値 − 予測値</span>。予測値は同じxの位置の回帰直線上で読む。`;
+  const p2=`同じxの位置で、<span class="red">実際の点と回帰直線上の予測値との縦方向の差</span>を見る。`;
   const p3=`縦方向の差が最も大きいのは<span class="blue">B（12）</span>。`;
   u2res3.innerHTML=resultHTML(map[z[0]],z[1],actual,p1,p2,p3);
   u2res3.classList.remove("hidden");u2lock3.classList.remove("hidden");
